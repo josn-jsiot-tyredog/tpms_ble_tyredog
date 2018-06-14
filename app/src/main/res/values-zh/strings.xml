@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">胎壓偵測器</string>
+
+
+    <string name="wellcome">歡迎使用 TYREDOG 胎壓偵測器!</string>
+
+    <string name="module_power">請將模組接上電源!</string>
+    <string name="module_connected">模組已連結!</string>
+    <string name="module_disconnected">模組已中斷連結!</string>
+
+    <string name="ble_not_supported">裝置不支援藍芽</string>
+
+    <string name="checkscan">持續搜尋TPMS模組?</string>
+    <string name="scanerror">搜尋失敗!</string>
+    <string name="contiune">持續</string>
+
+    <string name="spinPunit">壓力單位 :</string>
+    <string name="spinTunit">溫度單位 :</string>
+    <string name="setset">設定</string>
+    <string name="setalarm">  ●  警報設定</string>
+    <string name="setunit">  ●  單位設定</string>
+    <string name="setsystem">  ●  系統設定</string>
+    <string name="unittemp"> 溫度單位</string>
+    <string name="unitpress"> 壓力單位</string>
+    <string name="hightemp"> 過高溫度臨界值</string>
+    <string name="highpress"> 過高壓力臨界值</string>
+    <string name="lowpress"> 過低壓力臨界值</string>
+    <string name="setinitial">回復預設值</string>
+    <string name="setstop">關閉偵測</string>
+    <string name="setreturn">返回主畫面</string>
+    <string name="Demo">演示模式</string>
+    <string name="PushScan">重啟搜尋模組</string>
+
+    <string name="pressalarm">輪胎胎壓異常</string>
+    <string name="tempalarm">輪胎胎溫異常</string>
+    <string name="sensoralarm">感測器異常</string>
+
+    <string name="wheel0">左前輪</string>
+    <string name="wheel1">右前輪</string>
+    <string name="wheel2">左後輪</string>
+    <string name="wheel3">右後輪</string>
+
+    <string name="press">胎壓</string>
+    <string name="temp">胎溫</string>
+    <string name="sensor">感測器</string>
+
+    <string name="pressH">高於警報值!</string>
+    <string name="pressL">低於警報值!</string>
+    <string name="tempH">高於警報值!</string>
+    <string name="btL">電量不足!</string>
+
+
+
+    <string name="LOGO">TYREDOG</string>
+    <string name="closeapp">關閉胎壓偵測系統?</string>
+    <string name="Cancel">取消</string>
+    <string name="OK">確定</string>
+    <string name="about">關於TYREDOG</string>
+</resources>

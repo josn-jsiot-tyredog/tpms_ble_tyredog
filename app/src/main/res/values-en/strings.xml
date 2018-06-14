@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TPMS</string>
+
+
+    <string name="wellcome">Welcome To TYREDOG TPMS !</string>
+
+    <string name="module_power">Please connect module to power supply !</string>
+    <string name="module_connected">Module Connected !</string>
+    <string name="module_disconnected">Module Disconnected !</string>
+
+
+    <string name="ble_not_supported">BLE is not supported</string>
+    <string name="label_data">Data:</string>
+    <string name="label_device_address">Device address:</string>
+    <string name="label_state">State:</string>
+    <string name="no_data">No data</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="title_devices">BLE Device Scan</string>
+    <string name="error_bluetooth_not_supported">Bluetooth not supported.</string>
+    <string name="unknown_device">Unknown device</string>
+    <string name="unknown_characteristic">Unknown characteristic</string>
+    <string name="unknown_service">Unknown service</string>
+    <string name="checkscan">Continue scanning TPMS module?</string>
+    <string name="scanerror">Scan invalid!</string>
+    <string name="contiune">Continue</string>
+    <string name="Demo">Demo Mode</string>
+    <string name="PushScan">Push to scan!</string>
+    <string name="moduleint">Module interrupt!</string>
+
+
+    <string name="menu_connect">Connect</string>
+    <string name="menu_disconnect">Disconnect</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_stop">Stop</string>
+
+    <string name="setvoice">Tone Setting</string>
+    <string name="voicealarm">Alert tone</string>
+    <string name="voicenotiy">Notification tone</string>
+    <string name="voiceSystem">Set by the system</string>
+    <string name="voiceApp">Set by application</string>
+    <string name="closeitem">  Turn off the sound options</string>
+    <string name="closealarm">Off Alarm</string>
+    <string name="closenotiy">Off Noti.</string>
+
+
+    <string name="spinPunit">Pressure Unit :</string>
+    <string name="spinTunit">Temperature Unit :</string>
+    <string name="setset">Setting</string>
+    <string name="setalarm">  ●  Alarm Setting</string>
+    <string name="setunit">  ●  Unit Setting</string>
+    <string name="setsystem">  ●  System Setting</string>
+    <string name="unittemp"> Temperature Unit</string>
+    <string name="unitpress"> Pressure Unit</string>
+    <string name="hightemp"> High Temperature Limit</string>
+    <string name="highpress"> High Pressure Limit</string>
+    <string name="lowpress"> Low Pressure Limit</string>
+    <string name="setinitial">Return Initial</string>
+    <string name="setstop">Close App</string>
+    <string name="setreturn">Return</string>
+
+    <string name="pressalarm">Tire Pressure Abnormalities</string>
+    <string name="tempalarm">Tire Temperature Abnormalities</string>
+    <string name="sensoralarm">Sensor Abnormalities</string>
+
+    <string name="wheel0">Left front wheel</string>
+    <string name="wheel1">Right front wheel</string>
+    <string name="wheel2">Left rear wheel</string>
+    <string name="wheel3">Right rear wheel</string>
+
+    <string name="press">pressure</string>
+    <string name="temp">temperature</string>
+    <string name="sensor">sensor</string>
+
+    <string name="pressH">too high!</string>
+    <string name="pressL">too low!</string>
+    <string name="tempH">too high!</string>
+    <string name="btL">battery low!</string>
+
+    <string name="chwok">Wheel position switched</string>
+
+    <string name="LOGO">TYREDOG</string>
+    <string name="closeapp">Close TPMS system?</string>
+    <string name="Cancel">Cancel</string>
+    <string name="OK">OK</string>
+    <string name="about">About TYREDOG</string>
+    <string name="close">Close App</string>
+    <string name="rescan">ReScan</string>
+    <string name="readysscan">Enter Scan TPMS Module...</string>
+    <string name="resetscan">Retry Scan TPMS Module?</string>
+
+
+    <string name="company">JOSN Electronic Co., Ltd.</string>
+    <string name="phone">Tel: (02)2299-6900</string>
+    <string name="mail">Mail: sales@josn.com.tw</string>
+    <string name="web">Web: www.josn.com.tw</string>
+    <string name="address">Address: 3F, No.12, Wugong 6th Rd., Xinzhuang Dist., New Taipei City, 242, Taiwan</string>
+
+
+</resources>

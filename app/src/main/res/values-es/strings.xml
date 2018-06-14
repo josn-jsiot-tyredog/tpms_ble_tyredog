@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="app_name">SCPN</string>
+
+
+    <string name="wellcome">Bienvenido a TIREMONI SCPN !</string>
+
+    <string name="module_power">Por favor, conecte el módulo al cable de alimentación !</string>
+    <string name="module_connected">Módulo conectado !</string>
+    <string name="module_disconnected">Módulo desconectado !</string>
+
+
+    <string name="ble_not_supported">BLE no es compatible </string>
+    <string name="label_data">Datos:</string>
+    <string name="label_device_address">Dirección del dispositivo:</string>
+    <string name="label_state">Estatus:</string>
+    <string name="no_data">Sin datos</string>
+    <string name="connected">Conectado</string>
+    <string name="disconnected">Desconectado</string>
+    <string name="title_devices">BLE Escaneo del dispositivo </string>
+    <string name="error_bluetooth_not_supported">Bluetooth no compatible </string>
+    <string name="unknown_device">Dispositivo desconocido</string>
+    <string name="unknown_characteristic">Característica desconocida</string>
+    <string name="unknown_service">Servicio desconocido</string>
+    <string name="checkscan">Continuar buscando el módulo SCPN?</string>
+    <string name="scanerror">¡Escaneo inválido!</string>
+    <string name="contiune">Siguiente</string>
+    <string name="Demo">Modo de demostración</string>
+    <string name="PushScan">¡Iniciar escaneo!</string>
+    <string name="moduleint">¡Módulo interrumpido!</string>
+
+
+    <string name="menu_connect">Conectar</string>
+    <string name="menu_disconnect">Desconectar</string>
+    <string name="menu_scan">Escaneo</string>
+    <string name="menu_stop">Stop</string>
+
+    <string name="setvoice">Ajuste de sonido</string>
+    <string name="voicealarm">Sonido de alarma</string>
+    <string name="voicenotiy">Sonido de notificación</string>
+    <string name="voiceSystem">Configuración del sistema</string>
+    <string name="voiceApp">Configuración de la aplicación</string>
+    <string name="closeitem">Desactivar las opciones de sonido</string>
+    <string name="closealarm">Desactivar alarma</string>
+    <string name="closenotiy">Desactivar notificaciones</string>
+
+
+    <string name="spinPunit">Unidad de presión :</string>
+    <string name="spinTunit">Unidad de temperatura :</string>
+    <string name="setset">Ajustes</string>
+    <string name="setalarm"> Ajustes de alarma</string>
+    <string name="setunit"> Ajustes de la unidad</string>
+    <string name="setsystem">  justes del sistema</string>
+    <string name="unittemp"> Unidad de temperatura</string>
+    <string name="unitpress"> Unidad de presión</string>
+    <string name="hightemp"> Límite de temperatura</string>
+    <string name="highpress"> Límite de presión superior</string>
+    <string name="lowpress"> Límite de presión inferior</string>
+    <string name="setinitial">Preajustes</string>
+    <string name="setstop">Cerrar aplicación</string>
+    <string name="setreturn">Atras</string>
+
+    <string name="pressalarm">aviso presion del neumatico</string>
+    <string name="tempalarm">aviso temperatura</string>
+    <string name="sensoralarm">aviso Sensor</string>
+
+    <string name="wheel0">Rueda delantera izquierda</string>
+    <string name="wheel1">Rueda delantera derecha</string>
+    <string name="wheel2">Rueda trasera izquierda</string>
+    <string name="wheel3">Rueda trasera derecha</string>
+
+    <string name="press">Presión</string>
+    <string name="temp">Temperatura</string>
+    <string name="sensor">Sensor</string>
+
+    <string name="pressH">demasiado alto!</string>
+    <string name="pressL">demasiado bajo!</string>
+    <string name="tempH">demasiado alto!</string>
+    <string name="btL">bateria baja!</string>
+
+
+    <string name="LOGO">TireMoni</string>
+    <string name="closeapp">¿Salir del sistema SCPN?</string>
+    <string name="Cancel">Cancelar</string>
+    <string name="OK">OK</string>
+    <string name="about">Sobre TireMoni</string>
+    <string name="close">Cerrar aplicación</string>
+    <string name="rescan">Escanear de nuevo</string>
+    <string name="readysscan">Iniciar Scan SCPN Modulo...</string>
+    <string name="resetscan">Repetir el Scan del SCPN modulo?</string>
+
+
+    <string name="company">tpm GmbH</string>
+    <string name="phone">Tel: +49 (9099) 966 4966</string>
+    <string name="mail">Mail: sales@tiremoni.com</string>
+    <string name="web">Web: www.tiremoni.com</string>
+    <string name="address">Direccion: Gewerbepark 26, D-86687 Kaisheim</string>
+
+
+</resources>

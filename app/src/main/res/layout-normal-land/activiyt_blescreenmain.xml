@@ -1,0 +1,464 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:background="@drawable/p_bk1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:textColor="@android:color/black"
+        android:visibility="visible">
+
+        <requestFocus/>
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/iBtnMain"
+        android:layout_width="90dp"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/p_main_car_0"/>
+
+    <ImageButton
+        android:id="@+id/iBtnLogo"
+        android:layout_width="117dp"
+        android:layout_height="29dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/l_logo_tyredog_0"/>
+
+
+    <ImageButton
+        android:id="@+id/iBtnSet"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/l_mode_set_0"/>
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="204dp"
+        android:layout_height="138dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/iBtnLogo"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/l_bg_value_0">
+
+        <ImageButton
+            android:id="@+id/iBtnNo1"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_no_1_0"/>
+
+        <ImageButton
+            android:id="@+id/iBtnBt1"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_bt_0"/>
+
+
+        <TextView
+            android:id="@+id/tViewVP1"
+            android:layout_width="135dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="64.0"
+            android:textColor="@color/white"
+            android:textSize="48sp"/>
+
+        <TextView
+            android:id="@+id/tViewVT1"
+            android:layout_width="135dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="25"
+            android:textColor="@color/white"
+            android:textSize="40sp"/>
+
+        <ImageButton
+            android:id="@+id/iBtnPress1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="15dp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_press_0"/>
+
+        <ImageButton
+            android:id="@+id/iBtnTemp1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="17dp"
+            android:layout_marginLeft="7dp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_temp_2"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="204dp"
+        android:layout_height="138dp"
+        android:background="@drawable/l_bg_value_0"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_below="@+id/iBtnLogo"
+        android:layout_marginTop="0dp">
+
+
+        <ImageButton
+            android:id="@+id/iBtnNo2"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_no_2_0"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"/>
+
+        <ImageButton
+            android:id="@+id/iBtnBt2"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_bt_0"/>
+
+
+        <TextView
+            android:id="@+id/tViewVP2"
+            android:layout_width="135dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="64.0"
+            android:textColor="@color/white"
+            android:textSize="48sp"/>
+
+        <TextView
+            android:id="@+id/tViewVT2"
+            android:layout_width="135dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="25"
+            android:textColor="@color/white"
+            android:textSize="40sp"/>
+
+        <ImageButton
+            android:id="@+id/iBtnPress2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="15dp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_press_0"/>
+
+        <ImageButton
+            android:id="@+id/iBtnTemp2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="17dp"
+            android:layout_marginLeft="7dp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_temp_2"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="204dp"
+        android:layout_height="138dp"
+        android:background="@drawable/l_bg_value_0"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp">
+
+        <ImageButton
+            android:id="@+id/iBtnNo3"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_no_3_0"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"/>
+
+        <ImageButton
+            android:id="@+id/iBtnBt3"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_bt_0"/>
+
+
+        <TextView
+            android:id="@+id/tViewVP3"
+            android:layout_width="135dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="64.0"
+            android:textColor="@color/white"
+            android:textSize="48sp"/>
+
+        <TextView
+            android:id="@+id/tViewVT3"
+            android:layout_width="135dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="25"
+            android:textColor="@color/white"
+            android:textSize="40sp"/>
+
+        <ImageButton
+            android:id="@+id/iBtnPress3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="15dp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_press_0"/>
+
+        <ImageButton
+            android:id="@+id/iBtnTemp3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="17dp"
+            android:layout_marginLeft="7dp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_temp_2"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout4"
+        android:layout_width="204dp"
+        android:layout_height="138dp"
+        android:background="@drawable/l_bg_value_0"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp">
+
+        <ImageButton
+            android:id="@+id/iBtnNo4"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_no_4_0"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"/>
+
+        <ImageButton
+            android:id="@+id/iBtnBt4"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_bt_0"/>
+
+
+        <TextView
+            android:id="@+id/tViewVP4"
+            android:layout_width="135dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="64.0"
+            android:textColor="@color/white"
+            android:textSize="48sp"/>
+
+        <TextView
+            android:id="@+id/tViewVT4"
+            android:layout_width="135dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="25"
+            android:textColor="@color/white"
+            android:textSize="40sp"/>
+
+        <ImageButton
+            android:id="@+id/iBtnPress4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="15dp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_press_0"/>
+
+        <ImageButton
+            android:id="@+id/iBtnTemp4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="17dp"
+            android:layout_marginLeft="7dp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/l_sign_temp_2"/>
+
+    </RelativeLayout>
+
+
+    <ImageButton
+        android:id="@+id/iBtnAnt"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/l_sign_rx_3"/>
+
+
+    <ImageButton
+        android:id="@+id/iBtnPunit"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/iBtnAnt"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/l_unitp_psi_0"/>
+
+
+    <ImageButton
+        android:id="@+id/iBtnTunit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/iBtnPunit"
+        android:layout_marginLeft="70dp"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/l_unitt_c_0"/>
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TPMS</string>
+
+
+    <string name="wellcome">Willkommen zu TIREMONI TPMS !</string>
+
+    <string name="module_power">Bitte verbinde das Modul mit dem Stromkabel !</string>
+    <string name="module_connected">Modul verbunden !</string>
+    <string name="module_disconnected">Modul getrennt !</string>
+
+
+    <string name="ble_not_supported">BLE wird nicht unterstützt</string>
+    <string name="label_data">Daten:</string>
+    <string name="label_device_address">Device Adresse:</string>
+    <string name="label_state">Status:</string>
+    <string name="no_data">Keine Daten</string>
+    <string name="connected">Verbunden</string>
+    <string name="disconnected">Getrennt</string>
+    <string name="title_devices">BLE Device Scan</string>
+    <string name="error_bluetooth_not_supported">Bluetooth nicht unterstützt.</string>
+    <string name="unknown_device">Unbekanntes Device</string>
+    <string name="unknown_characteristic">Unbekannte Eigenschaft</string>
+    <string name="unknown_service">Unbekannter Service</string>
+    <string name="checkscan">Weiter nach TPMS Modul suchen?</string>
+    <string name="scanerror">Scan ungültig</string>
+    <string name="contiune">Weiter</string>
+    <string name="Demo">Demo-Betrieb</string>
+    <string name="PushScan">Starte Scan!</string>
+    <string name="moduleint">Modul Unterbrochen!</string>
+
+
+    <string name="menu_connect">Verbinden</string>
+    <string name="menu_disconnect">Trennen</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_stop">Stop</string>
+
+    <string name="setvoice">Ton Einstellung</string>
+    <string name="voicealarm">Alarm Ton</string>
+    <string name="voicenotiy">Benachrichtigung Ton</string>
+    <string name="voiceSystem">Einstellung vom System</string>
+    <string name="voiceApp">Einstellung von App</string>
+    <string name="closeitem">　Ton Optionen ausschalten</string>
+    <string name="closealarm">Alarm aus</string>
+    <string name="closenotiy">Nachr. aus</string>
+
+
+    <string name="spinPunit">Druckeinheit :</string>
+    <string name="spinTunit">Temperatureinheit :</string>
+    <string name="setset">Einstellung</string>
+    <string name="setalarm">  ●  Alarm Einstellung</string>
+    <string name="setunit">  ●  Einheit Einstellung</string>
+    <string name="setsystem">  ●  System Einstellung</string>
+    <string name="unittemp"> Temperatureinheit</string>
+    <string name="unitpress"> Druckeinheit</string>
+    <string name="hightemp"> Temperatur Limit</string>
+    <string name="highpress"> Oberes Druck Limit</string>
+    <string name="lowpress"> Unteres Druck Limit</string>
+    <string name="setinitial">Voreinstellung</string>
+    <string name="setstop">App schliessen</string>
+    <string name="setreturn">zurück</string>
+
+    <string name="pressalarm">Reifendruck Warnung</string>
+    <string name="tempalarm">Temperatur Warnung</string>
+    <string name="sensoralarm">Sensor Warnung</string>
+
+    <string name="wheel0">Rad links vorne</string>
+    <string name="wheel1">Rad rechts vorne</string>
+    <string name="wheel2">Rad links hinten</string>
+    <string name="wheel3">Rad rechts hinten</string>
+
+    <string name="press">Druck</string>
+    <string name="temp">Temperatur</string>
+    <string name="sensor">Sensor</string>
+
+    <string name="pressH">zu hoch!</string>
+    <string name="pressL">zu niedrig!</string>
+    <string name="tempH">zu hoch!</string>
+    <string name="btL">Batterie schwach!</string>
+
+
+    <string name="chwok">Radposition geschaltet</string>
+
+
+    <string name="LOGO">TireMoni</string>
+    <string name="closeapp">TPMS System beenden?</string>
+    <string name="Cancel">Abbruch</string>
+    <string name="OK">OK</string>
+    <string name="about">über TireMoni</string>
+    <string name="close">App Schliessen</string>
+    <string name="rescan">Neu Scannen</string>
+    <string name="readysscan">Starte Scan TPMS Modul...</string>
+    <string name="resetscan">Scan TPMS Modul wiederholen?</string>
+
+
+    <string name="company">tpm GmbH</string>
+    <string name="phone">Tel: +49 (9099) 966 4966</string>
+    <string name="mail">Mail: sales@tiremoni.com</string>
+    <string name="web">Web: www.tiremoni.com</string>
+    <string name="address">Adresse: Gewerbepark 26, D-86687 Kaisheim</string>
+
+
+</resources>

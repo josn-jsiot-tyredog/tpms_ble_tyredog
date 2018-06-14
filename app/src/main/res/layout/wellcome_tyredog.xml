@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+
+    <ImageButton
+        android:id="@+id/iBtnMainlogo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/td_1"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

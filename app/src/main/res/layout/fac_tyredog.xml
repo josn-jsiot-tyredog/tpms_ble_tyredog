@@ -1,0 +1,139 @@
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+
+
+
+
+
+        <Button
+            android:id="@+id/iBtnLearn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/rectangle_drawable_gary"
+            android:text="@string/modelen"
+            android:textColor="@color/orange"
+            android:textSize="20sp"
+            android:visibility="visible"/>
+        <Button
+            android:id="@+id/iBtnCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/iBtnLearn"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_drawable_gary"
+            android:text="@string/modechk"
+            android:textColor="@color/orange"
+            android:textSize="20sp"
+            android:visibility="visible"/>
+        <Button
+            android:id="@+id/iBtnCal"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/iBtnCheck"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_drawable_gary"
+            android:text="@string/modecal"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            android:visibility="visible"/>
+        <Button
+            android:id="@+id/iBtnTest"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/iBtnCal"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_drawable_gary"
+            android:text="@string/modetest"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            android:visibility="visible"/>
+        <Button
+            android:id="@+id/iBtnBletest"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/iBtnTest"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_drawable_gary"
+            android:text="@string/modebletest"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            android:visibility="visible"/>
+        <Button
+            android:id="@+id/iBtnEmode"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/iBtnBletest"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_drawable_gary"
+            android:text="@string/modeemode"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:visibility="visible"/>
+
+        <Button
+
+            android:id="@+id/iBtnExit"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/iBtnEmode"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_drawable_gary"
+            android:text="@string/modeexit"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:visibility="visible"/>
+
+
+        <Button
+            android:id="@+id/iBtnQA"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/iBtnExit"
+            android:layout_marginTop="60dp"
+            android:layout_above="@+id/iBtnVer"
+            android:layout_marginBottom="60dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_drawable_gary"
+            android:text="@string/modeqa"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            android:visibility="visible"/>
+
+
+        <Button
+            android:id="@+id/iBtnVer"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/iBtnExit"
+            android:layout_marginTop="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_drawable_gary"
+            android:text="@string/modever"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            android:visibility="visible"/>
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

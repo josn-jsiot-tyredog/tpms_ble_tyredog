@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="BaudRate_Var">
+        <item >9600</item>
+        <item >19200</item>
+        <item >115200</item>
+    </string-array>
+
+
+    <string-array name="UnitPress_Var">
+        <item >@string/psi</item>
+        <item >@string/kpa</item>
+        <item >@string/bar</item>
+        <item >@string/kgcm2</item>
+     </string-array>
+
+    <string-array name="UnitTemp_Var">
+        <item >@string/cTemp</item>
+        <item >@string/fTemp</item>
+    </string-array>
+
+
+    <string-array name="Timer_Var">
+        <item >48ms</item>
+        <item >96ms</item>
+        <item >192ms</item>
+        <item >384ms</item>
+    </string-array>
+
+
+</resources>
