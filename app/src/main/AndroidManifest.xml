@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sheng.tpms">
+          package="com.sheng.tpms">
 
     <uses-feature
-        android:name="android.hardware.bluetooth_le" android:required="true" />
+        android:name="android.hardware.bluetooth_le"
+        android:required="true"/>
 
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_tyredog"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_tyredog"
         android:supportsRtl="true"
-        android:largeHeap="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         //no action bar
         <activity
@@ -25,47 +26,56 @@
             android:configChanges="orientation"
             android:screenOrientation="landscape">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
-                       android:resource="@xml/device_filter" />
-        </activity>
 
-        <activity android:name=".blescan"
-                  android:configChanges="orientation|keyboardHidden|screenSize">
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter"/>
         </activity>
-        <activity android:name=".blescreenMain"
-                  android:launchMode="singleTop"
-                  android:configChanges="orientation|keyboardHidden|screenSize">
-                  <!--android:screenOrientation="landscape">-->
+        <activity
+            android:name=".blescan"
+            android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
-        <activity android:name=".blesetting"
-                  android:configChanges="orientation">
-        </activity>
-        <activity android:name=".voicesetting"
-                  android:configChanges="orientation">
-        </activity>
+        <activity
+            android:name=".blescreenMain"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop">
 
-
+            <!-- android:screenOrientation="landscape"> -->
+        </activity>
+        <activity
+            android:name=".blesetting"
+            android:configChanges="orientation">
+        </activity>
+        <activity
+            android:name=".voicesetting"
+            android:configChanges="orientation">
+        </activity>
         <activity android:name=".DeviceScanActivity"/>
         <activity android:name=".DeviceControlActivity"/>
 
-        <service android:name=".BluetoothLeService" android:enabled="true"/>
-
+        <service
+            android:name=".BluetoothLeService"
+            android:enabled="true"/>
         <service android:name=".MyInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".daramain"
+            android:label="@string/title_activity_daramain"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
     </application>
-
-
 
 </manifest>
