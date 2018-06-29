@@ -33,7 +33,7 @@ public class blesetting extends AppCompatActivity {
 
 
 
-
+    private boolean setwheel_FLAG = true;
 
     public boolean SHOW_loadpara = false;
     private boolean screenPL = true;
@@ -61,9 +61,10 @@ public class blesetting extends AppCompatActivity {
     int W1 = 24;
     int W2 = 25;
     int W3 = 26;
-    private String saveKey[]=new String[]{"FIRST","PUNIT","TUNIT","HPLIMIT","LPLIMIT","HTLIMIT","HPMAX","LPMAX","HTMAX","P1","P2","P3","P4","PP1","PP2","PP3","PP4","T1","T2","T3","T4","SETFLAG","CLOSE","W0","W1","W2","W3"};
-    private int saveValue[]=new int[]{0,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3};
-    private int InitValue[]=new int[]{1,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3};
+    int SETWHEEL = 29;
+    private String saveKey[]=new String[]{"FIRST","PUNIT","TUNIT","HPLIMIT","LPLIMIT","HTLIMIT","HPMAX","LPMAX","HTMAX","P1","P2","P3","P4","PP1","PP2","PP3","PP4","T1","T2","T3","T4","SETFLAG","CLOSE","W0","W1","W2","W3","W4","W5","SETWHEEL"};
+    private int saveValue[]=new int[]{0,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0};
+    private int InitValue[]=new int[]{1,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0};
     int PressPoint[]=new int[]{0,1,2,2};
     int TempPoint[]=new int[]{0,0};
 
@@ -85,12 +86,15 @@ public class blesetting extends AppCompatActivity {
     private Spinner miSpinPunit,miSpinTunit;
     private SeekBar miSebHP,miSebLP,miSebHT;
 
-
-
     private TextView miTxtSet,miTxtPara,miTxtHPlimit,miTxtLPlimit,miTxtHTlimit;
     private ImageButton miBtnMode1,miBtnMode2,miBtnMode3,miBtnMode4;
     private Button miBtnInitial,miBtnClose,miBtnReturn;
+    private Button miBtn2Wheel,miBtn4Wheel,miBtn6Wheel;
     private ScrollView miScVSet;
+
+    private RelativeLayout mrelativeLayoutsetting;
+
+
 
     private double ModeSizeW_k = 0.25;
     private double ModeBottom_k = 0;
@@ -240,6 +244,16 @@ public class blesetting extends AppCompatActivity {
         miBtnInitial.setOnClickListener(iBtnInitialOnclick);
         miBtnClose.setOnClickListener(iBtnCloseOnclick);
 
+        mrelativeLayoutsetting = (RelativeLayout) findViewById(R.id.relativeLayoutsetting);
+
+        miBtn2Wheel = (Button)findViewById(R.id.iBtn2Wheel);
+        miBtn4Wheel = (Button)findViewById(R.id.iBtn4Wheel);
+        miBtn6Wheel = (Button)findViewById(R.id.iBtn6Wheel);
+        miBtn2Wheel.setOnClickListener(iBtn2WheelOnclick);
+        miBtn4Wheel.setOnClickListener(iBtn4WheelOnclick);
+        miBtn6Wheel.setOnClickListener(iBtn6WheelOnclick);
+
+
         miSpinPunit = (Spinner) findViewById(R.id.iSpinPunit);
         miSpinPunit.setOnItemSelectedListener(spinPunitSelected);
         miSpinTunit = (Spinner) findViewById(R.id.iSpinTunit);
@@ -348,6 +362,13 @@ public class blesetting extends AppCompatActivity {
             miTxtPara.setVisibility(View.VISIBLE);
         } else {
             miTxtPara.setVisibility(View.INVISIBLE);
+        }
+
+
+        if (setwheel_FLAG == true) {
+            mrelativeLayoutsetting.setVisibility(View.VISIBLE);
+        } else {
+            mrelativeLayoutsetting.setVisibility(View.INVISIBLE);
         }
 
 
@@ -764,6 +785,29 @@ public class blesetting extends AppCompatActivity {
     };
 
 
-
+    private View.OnClickListener iBtn2WheelOnclick= new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SetPara(saveKey[SETWHEEL],2);
+            SetPara(saveKey[SETFLAG],1);
+            finish();
+        }
+    };
+    private View.OnClickListener iBtn4WheelOnclick= new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SetPara(saveKey[SETWHEEL],4);
+            SetPara(saveKey[SETFLAG],1);
+            finish();
+        }
+    };
+    private View.OnClickListener iBtn6WheelOnclick= new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SetPara(saveKey[SETWHEEL],6);
+            SetPara(saveKey[SETFLAG],1);
+            finish();
+        }
+    };
 
 }

@@ -346,6 +346,61 @@
             </RelativeLayout>
 
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_drawable_lightgary"
+                android:id="@+id/relativeLayoutsetting"
+                android:layout_below="@+id/relativeLayoutSystem"
+                android:layout_marginTop="1dp"
+                android:layout_alignParentStart="true">
+
+                <Button
+                    android:id="@+id/iBtn2Wheel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/set2wheel"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+                <Button
+                    android:id="@+id/iBtn4Wheel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/set4wheel"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+
+                <Button
+                    android:id="@+id/iBtn6Wheel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/set6wheel"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+
 
         </RelativeLayout>
 

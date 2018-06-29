@@ -36,6 +36,12 @@
     <string name="menu_scan">Scan</string>
     <string name="menu_stop">Stop</string>
 
+
+    <string name="set2wheel">2Wheel mode</string>
+    <string name="set4wheel">4Wheel mode</string>
+    <string name="set6wheel">6Wheel mode</string>
+
+
     <string name="setvoice">Ton Einstellung</string>
     <string name="voicealarm">Alarm Ton</string>
     <string name="voicenotiy">Benachrichtigung Ton</string>

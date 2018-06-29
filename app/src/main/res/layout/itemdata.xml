@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Txt_Wheel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textColor="#840"
+            android:textSize="24sp"
+            tools:text="Wheel 1"/>
+
+        <!--<TextView-->
+            <!--android:id="@+id/Txt_Subwords"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="New Text"-->
+            <!--android:textColor="#480"-->
+            <!--android:textSize="20sp"/>-->
+
+
+        <ImageView
+            android:id="@+id/Img_Rx"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            app:srcCompat="@drawable/l_sign_rx_3_g"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/Img_Press"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/Txt_Press"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            app:srcCompat="@drawable/btire_0d"/>
+
+        <TextView
+            android:id="@+id/Txt_Press"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/Img_Temp"
+            android:gravity="center"
+            android:text="New Text"
+            android:textColor="#840"
+            android:textSize="24sp"
+            tools:text="32.5"/>
+
+        <ImageView
+            android:id="@+id/Img_Temp"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/Txt_Temp"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            app:srcCompat="@drawable/l_sign_temp_1r"/>
+
+
+        <TextView
+            android:id="@+id/Txt_Temp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/Img_Bt"
+            android:gravity="center"
+            android:text="New Text"
+            android:textColor="#840"
+            android:textSize="24sp"
+            tools:text="25"/>
+
+
+        <ImageView
+            android:id="@+id/Img_Bt"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/Img_ststus"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            app:srcCompat="@drawable/l_sign_bt_0"/>
+
+        <ImageView
+            android:id="@+id/Img_ststus"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.01"
+            android:adjustViewBounds="true"
+            android:background="@color/open"
+            android:src="@mipmap/ic_launcher"
+            app:srcCompat="@drawable/l_open_sign1_0"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -27,7 +27,6 @@
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
 
@@ -35,25 +34,29 @@
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter"/>
         </activity>
+
         <activity
             android:name=".blescan"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
+
         <activity
             android:name=".blescreenMain"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop">
-
             <!-- android:screenOrientation="landscape"> -->
         </activity>
+
         <activity
             android:name=".blesetting"
             android:configChanges="orientation">
         </activity>
+
         <activity
             android:name=".voicesetting"
             android:configChanges="orientation">
         </activity>
+
         <activity android:name=".DeviceScanActivity"/>
         <activity android:name=".DeviceControlActivity"/>
 
@@ -71,11 +74,10 @@
             </intent-filter>
         </service>
 
-        <activity
-            android:name=".daramain"
-            android:label="@string/title_activity_daramain"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".DatamainActivity">
         </activity>
+
+
     </application>
 
 </manifest>

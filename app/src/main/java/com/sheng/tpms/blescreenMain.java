@@ -56,6 +56,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -82,6 +83,7 @@ import static com.sheng.tpms.R.layout.port_activiyt_blescreenmain;
 public class blescreenMain extends Activity {
     private final static String TAG = blescreenMain.class.getSimpleName();
 
+    private DatamainActivity mDatamainActivity = new DatamainActivity();
     private BluetoothGatt mBluetoothGatt;
 //    static String strValue;
 //    static{
@@ -119,9 +121,10 @@ public class blescreenMain extends Activity {
     int W1 = 24;
     int W2 = 25;
     int W3 = 26;
-    private String saveKey[]=new String[]{"FIRST","PUNIT","TUNIT","HPLIMIT","LPLIMIT","HTLIMIT","HPMAX","LPMAX","HTMAX","P1","P2","P3","P4","PP1","PP2","PP3","PP4","T1","T2","T3","T4","SETFLAG","CLOSE","W0","W1","W2","W3"};
-    private int saveValue[]=new int[]{0,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3};
-    private int InitValue[]=new int[]{1,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3};
+    int SETWHEEL = 29;
+    private String saveKey[]=new String[]{"FIRST","PUNIT","TUNIT","HPLIMIT","LPLIMIT","HTLIMIT","HPMAX","LPMAX","HTMAX","P1","P2","P3","P4","PP1","PP2","PP3","PP4","T1","T2","T3","T4","SETFLAG","CLOSE","W0","W1","W2","W3","W4","W5","SETWHEEL"};
+    private int saveValue[]=new int[]{0,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0};
+    private int InitValue[]=new int[]{1,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0};
     private int PressPoint[]=new int[]{1,0,2,2};
     private int TempPoint[]=new int[]{0,0};
 
@@ -136,6 +139,7 @@ public class blescreenMain extends Activity {
     int AlarmFlag = 9;
     int NotiyFlag = 10;
     int CLOSEV = 11;
+
     String saveKeyV[]=new String[]{"Voice","AlarmSysV","NotiySysV","AlarmAppV","NotiyAppV","AlarmMax","NotiyMax","SETVFLAG","SAFLAG","AlarmFlag","NotiyFlag","CLOSEV"};
     int saveValueV[]=new int[]{0,0,0,0,0,0,0,0,1,1,1,0};
     int initValueV[]=new int[]{1,0,0,5,5,10,10,0,1,1,1,0};
@@ -217,42 +221,43 @@ public class blescreenMain extends Activity {
     final static int[] wheelon = {R.drawable.p_no_1_1,R.drawable.p_no_2_2,R.drawable.p_no_3_2,R.drawable.p_no_4_2};
     final static int[] wheeloff = {R.drawable.p_no_1_0,R.drawable.p_no_2_0,R.drawable.p_no_3_0,R.drawable.p_no_4_0};
 
-    private int wheelN_k = 4;
-
-    private double PressData[]=new double[wheelN_k];
-    private double TempData[]=new double[wheelN_k];
-    private double PressDataS[]=new double[wheelN_k];
-    private int TempDataS[]=new int[wheelN_k];
+    private int wheelN_kT = 6;
 
 
-    private double PressDataBuf[]=new double[wheelN_k];
-    private double TempDataBuf[]=new double[wheelN_k];
-    private boolean BtFlagBuf[]=new boolean[wheelN_k];
-
-    private double PressHigh[]=new double[wheelN_k];
-    private double PressLow[]=new double[wheelN_k];
-    private double TempHigh[]=new double[wheelN_k];
-
-    private double PressRHigh[]=new double[wheelN_k];
-    private double PressRLow[]=new double[wheelN_k];
-    private double TempRHigh[]=new double[wheelN_k];
-
-//    private boolean GetFlag[]=new boolean[wheelN_k];
-    private boolean RxFlag[]=new boolean[wheelN_k];
-    private boolean BtFlag[]=new boolean[wheelN_k];
-
-    private boolean PressHFlag[]=new boolean[wheelN_k];
-    private boolean PressLFlag[]=new boolean[wheelN_k];
-    private boolean TempHFlag[]=new boolean[wheelN_k];
-    private boolean BtLowFlag[]=new boolean[wheelN_k];
+    private double PressData[]=new double[wheelN_kT];
+    private double TempData[]=new double[wheelN_kT];
+    private double PressDataS[]=new double[wheelN_kT];
+    private int TempDataS[]=new int[wheelN_kT];
 
 
-    private boolean PressHRFlag[]=new boolean[wheelN_k];
-    private boolean PressLRFlag[]=new boolean[wheelN_k];
-    private boolean TempHRFlag[]=new boolean[wheelN_k];
+    private double PressDataBuf[]=new double[wheelN_kT];
+    private double TempDataBuf[]=new double[wheelN_kT];
+    private boolean BtFlagBuf[]=new boolean[wheelN_kT];
 
-    private boolean FLASH_WHEEL[]=new boolean[wheelN_k];
-    private int CHANGE_WHEEL[]=new int[]{0,1,2,3};
+    private double PressHigh[]=new double[wheelN_kT];
+    private double PressLow[]=new double[wheelN_kT];
+    private double TempHigh[]=new double[wheelN_kT];
+
+    private double PressRHigh[]=new double[wheelN_kT];
+    private double PressRLow[]=new double[wheelN_kT];
+    private double TempRHigh[]=new double[wheelN_kT];
+
+//    private boolean GetFlag[]=new boolean[wheelN_kT];
+    private boolean RxFlag[]=new boolean[wheelN_kT];
+    private boolean BtFlag[]=new boolean[wheelN_kT];
+
+    private boolean PressHFlag[]=new boolean[wheelN_kT];
+    private boolean PressLFlag[]=new boolean[wheelN_kT];
+    private boolean TempHFlag[]=new boolean[wheelN_kT];
+    private boolean BtLowFlag[]=new boolean[wheelN_kT];
+
+
+    private boolean PressHRFlag[]=new boolean[wheelN_kT];
+    private boolean PressLRFlag[]=new boolean[wheelN_kT];
+    private boolean TempHRFlag[]=new boolean[wheelN_kT];
+
+    private boolean FLASH_WHEEL[]=new boolean[wheelN_kT];
+    private int CHANGE_WHEEL[]=new int[]{0,1,2,3,4,5};
 
 
     private int HIGHPRESS = 0;
@@ -287,12 +292,18 @@ public class blescreenMain extends Activity {
     private boolean SHOW_LOG = false;
     private boolean DEBUG_MODE = false;
     private boolean SHOW_PROTOCOL = false;
+    private boolean wheel4screen = false;
+    private boolean chk_module_FLAG = true;
+
+    private int wheelN_k = 4;
+
+
     private boolean screenPL = true;
     private boolean RXflash_enable = false;
     private boolean BLEint_FLAG = false;
     private boolean WriteFLAG = false;
     private boolean BleFstCmd = true;
-
+    private boolean chk_module = false;
 
 
 
@@ -513,7 +524,7 @@ public class blescreenMain extends Activity {
     private Button mBtnDemo,mBtnLearn,mBtnLearx,mBtnLend,mBtnFac,mBtnCal,mBtnTest,mBtnVer,mBtnGetid,mBtnTimeron,mBtnTimeroff,mBtnTimer;
     private ScrollView miScVSet;
     private Spinner miSpinGetid,miSpinTimer;
-
+    private ListView mlistview;
 
 
     private TextView mtViewVP1,mtViewVP2,mtViewVP3,mtViewVP4,mtViewVT1,mtViewVT2,mtViewVT3,mtViewVT4;
@@ -603,6 +614,7 @@ public class blescreenMain extends Activity {
 //                updateConnectionState(R.string.disconnected);
 //                invalidateOptionsMenu();
                 RXflash_enable = false;
+                chk_module = false;
                 Toast.makeText(blescreenMain.this, R.string.module_disconnected, Toast.LENGTH_LONG).show();
                 BleInt();
 //                clearUI();
@@ -627,64 +639,6 @@ public class blescreenMain extends Activity {
             }
         }
     };
-
-
-/*
-
-
-    // If a given GATT characteristic is selected, check for supported features.  This sample
-    // demonstrates 'Read' and 'Notify' features.  See
-    // http://d.android.com/reference/android/bluetooth/BluetoothGatt.html for the complete
-    // list of supported characteristic features.
-    private final ExpandableListView.OnChildClickListener servicesListClickListner =             //選擇UUID
-            new ExpandableListView.OnChildClickListener() {
-                @Override
-                public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
-                                            int childPosition, long id) {
-                    if (mGattCharacteristics != null) {
-                        final BluetoothGattCharacteristic characteristic =
-                                mGattCharacteristics.get(groupPosition).get(childPosition);       //點選後由Arraylist取得"特徵"
-                        final int charaProp = characteristic.getProperties();
-                        if ((charaProp | BluetoothGattCharacteristic.PROPERTY_READ) > 0) {
-                            Log.d(TAG, "PROPERTY_READ");
-                            // If there is an active notification on a characteristic, clear
-                            // it first so it doesn't update the data field on the user interface.
-                            if (mNotifyCharacteristic != null) {                                  //若已點選過需清掉
-                                mBluetoothLeService.setCharacteristicNotification(mNotifyCharacteristic, false);
-                                mNotifyCharacteristic = null;
-//                                Toast.makeText(blescreenMain.this, "Test8", Toast.LENGTH_SHORT).show();
-                            }
-                            mBluetoothLeService.readCharacteristic(characteristic);               // remote device 讀資料
-//                            Toast.makeText(blescreenMain.this, "Test7", Toast.LENGTH_SHORT).show();
-                        }
-//                        if ((charaProp | BluetoothGattCharacteristic.PROPERTY_WRITE) > 0) {
-//                            Log.d(TAG, "PROPERTY_WRITE");
-//                            if (mNotifyCharacteristic != null) {
-//                                mBluetoothLeService.setCharacteristicNotification(mNotifyCharacteristic, false);
-//                                mNotifyCharacteristic = null;
-//                            }
-
-//                            mBluetoothLeService.writeCharacteristic(characteristic);
-                            //characteristic.setValue(bytes);
-                            //characteristic.setValue("testing");
-                            //characteristic.setWriteType(BluetoothGattCharacteristic.PERMISSION_WRITE);
-//                        }
-                        if ((charaProp | BluetoothGattCharacteristic.PROPERTY_NOTIFY) > 0) {
-                            Log.d(TAG, "PROPERTY_NOTIFY");
-                            mNotifyCharacteristic = characteristic;
-                            mBluetoothLeService.setCharacteristicNotification(mNotifyCharacteristic, true);//開啟Notification
-//                            Toast.makeText(blescreenMain.this, "Test6", Toast.LENGTH_SHORT).show();
-                        }
-                        return true;
-                    }
-//                    Toast.makeText(blescreenMain.this, "Test5", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            };
-
-*/
-
-
 
 
 
@@ -1286,7 +1240,25 @@ public class blescreenMain extends Activity {
                 return;
             }else if (rxstr.indexOf(TC40) > -1){
                 CallLOG("Read MD Information");
-                displaydemo("Read OK");
+                if (Checksum(rxdata,18) == true){
+                    displaydemo("Read OK");
+                    chk_module = true;
+
+                    int[] rx = rxdata;
+
+                    int wheelN = 0;
+                    if (Byte2toFlag(rx[11],rx[12],0) == true) {
+                        wheelN = wheelN+1;
+                    }
+                    if (Byte2toFlag(rx[11],rx[12],1) == true) {
+                        wheelN = wheelN+2;
+                    }
+                    if (Byte2toFlag(rx[11],rx[12],2) == true) {
+                        wheelN = wheelN+4;
+                    }
+                    wheelN_k = wheelN;
+                    CallLOG(wheelN_k);
+                }
                 return;
             }else if (rxstr.indexOf(TC41) > -1){
                 CallLOG("Read MD ID");
@@ -1661,7 +1633,39 @@ public class blescreenMain extends Activity {
         }
     } //更新"DATA"
 
+    private boolean Checksum(int[] rxdata,int len){
+        int chksumbuf = 0;
+        int rxstart = rxdata[0] & 0xff;
+        int rxend = rxdata[len-1] & 0xff;
 
+        if (rxstart == 0x24 & rxend == 0x23) {
+//                etRead.setText(data);
+            for (int j = 1; j < len - 3; j++) {
+                chksumbuf = (rxdata[j] & 0xff) + (chksumbuf & 0xff);
+            }
+
+            int rxchk0 = 0;
+            int rxchk1 = 0;
+            if ((rxdata[len-3] >= 65) & (rxdata[len-3] <= 70)) {
+                rxchk1 = rxdata[len-3] - 65 + 10;
+            } else if ((rxdata[len-3] >= 48) & (rxdata[len-3] <= 57)) {
+                rxchk1 = rxdata[len-3] - 48;
+            }
+            if ((rxdata[len-2] >= 65) & (rxdata[len-2] <= 70)) {
+                rxchk0 = rxdata[len-2] - 65 + 10;
+            } else if ((rxdata[len-2] >= 48) & (rxdata[len-2] <= 57)) {
+                rxchk0 = rxdata[len-2] - 48;
+            }
+            int chksum = rxchk1 * 16 + rxchk0;
+
+            if (chksum == chksumbuf) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
 
     private boolean Byte2toFlag(int Byte1,int Byte0,int Bit){
         if(Byte1>=65){
@@ -1733,11 +1737,13 @@ public class blescreenMain extends Activity {
                             if (BleFstCmd == true){
 //                                Cmd_T1();
                                 Cmd_TC241();
+//                                Check_module();
                             }
                         }else{
                             if (BleFstCmd == true){
 //                                Cmd_T1();
                                 Cmd_TC241();
+//                                Check_module();
                             }
                         }
 
@@ -1752,6 +1758,7 @@ public class blescreenMain extends Activity {
                         mNotifyCharacteristic = characteristic;
                         mBluetoothLeService.setCharacteristicNotification(mNotifyCharacteristic, true);//開啟Notification
 //                        Toast.makeText(blescreenMain.this, "Test6", Toast.LENGTH_SHORT).show();
+//                        Check_module();
                     }
                 }
                 //////////////////////////////此段為可自行鎖定某特徵接收
@@ -1773,12 +1780,16 @@ public class blescreenMain extends Activity {
     private Runnable RxreflashTimer = new Runnable() {
         public void run() {
 
+            display_listview();
+
+
             if (FLASH_WHEEL[0] == true){
                 if (screenPL == true){
                     ReflashW0(CHANGE_WHEEL[0]);
                 }else {
                     l_ReflashW0(CHANGE_WHEEL[0]);
                 }
+                Log.d(TAG, "update_f");
                 FLASH_WHEEL[0] = false;
             }
             if (FLASH_WHEEL[1] == true){
@@ -1787,6 +1798,7 @@ public class blescreenMain extends Activity {
                 }else {
                     l_ReflashW1(CHANGE_WHEEL[1]);
                 }
+                Log.d(TAG, "update_f");
                 FLASH_WHEEL[1] = false;
             }
             if (FLASH_WHEEL[2] == true){
@@ -1806,6 +1818,7 @@ public class blescreenMain extends Activity {
                 FLASH_WHEEL[3] = false;
             }
 
+
             checkalarm();
 
             handler5.removeCallbacks(RxreflashTimer);
@@ -1817,146 +1830,151 @@ public class blescreenMain extends Activity {
 
     private void checkdata(int i) {
         int Waddress = CHECK_WHEEL(i);
-        if (RxFlag[i] == true && ((PressData[i] != PressDataBuf[i]) || (TempData[i] != TempDataBuf[i]) || (BtFlag[i] != BtFlagBuf[i]))){
+
+        if ((PressData[i] != PressDataBuf[i]) || (TempData[i] != TempDataBuf[i]) || (BtFlag[i] != BtFlagBuf[i])) {
+
+            if (RxFlag[i] == true && ((PressData[i] != PressDataBuf[i]) || (TempData[i] != TempDataBuf[i]) || (BtFlag[i] != BtFlagBuf[i]))){
 //                Log.d(TAG, "R=1 Data Difference");
-            //PRESSURE
-            if (PressHFlag[i] == true){
-                if (PressData[i] > PressHigh[i]){
-                    PressHigh[i] = PressData[i];
-                    PressRHigh[i] = PressData[i];
-//                        alarmcnt = alarmcnt_k;
-                    sound_cnt = alarmcnt_k;
-                    EnNoti_alarm(Waddress,HIGHPRESS);
-                    PressHRFlag[i] = false;
-                }else {
-                    if (PressData[i] < PressHigh[i] && PressData[i] >= saveValue[3]){
-                        if (PressData[i] < PressRHigh[i]){
-                            PressHRFlag[i] = true;
-                        }else if (PressData[i] > PressRHigh[i]){
-                            PressHRFlag[i] = false;
-                        }else {
-                            ;// (PressData[i] = PressRHigh[i])
-                        }
+                //PRESSURE
+                if (PressHFlag[i] == true){
+                    if (PressData[i] > PressHigh[i]){
+                        PressHigh[i] = PressData[i];
                         PressRHigh[i] = PressData[i];
-                    }else if (PressData[i] < (saveValue[3]-DeltaPress_k)){
+//                        alarmcnt = alarmcnt_k;
+                        sound_cnt = alarmcnt_k;
+                        EnNoti_alarm(Waddress,HIGHPRESS);
                         PressHRFlag[i] = false;
-                        PressHFlag[i] = false;
                     }else {
-                        ;//( (saveValue[3]-DeltaPress_k <= PressData[i] < PressHigh[i])
-                    }
-                }
-            }else if(PressLFlag[i] == true){
-                if (PressData[i] < PressLow[i]){
-                    PressLow[i] = PressData[i];
-                    PressRLow[i] = PressData[i];
-//                        alarmcnt = alarmcnt_k;
-                    sound_cnt = alarmcnt_k;
-                    EnNoti_alarm(Waddress,LOWPRESS);
-                    PressLRFlag[i] = false;
-                }else {
-                    if (PressData[i] > PressLow[i] && PressData[i] < saveValue[4]){
-                        if (PressData[i] > PressRLow[i]){
-                            PressLRFlag[i] = true;
-                        }else if (PressData[i] < PressRLow[i]){
-                            PressLRFlag[i] = false;
+                        if (PressData[i] < PressHigh[i] && PressData[i] >= saveValue[3]){
+                            if (PressData[i] < PressRHigh[i]){
+                                PressHRFlag[i] = true;
+                            }else if (PressData[i] > PressRHigh[i]){
+                                PressHRFlag[i] = false;
+                            }else {
+                                ;// (PressData[i] = PressRHigh[i])
+                            }
+                            PressRHigh[i] = PressData[i];
+                        }else if (PressData[i] < (saveValue[3]-DeltaPress_k)){
+                            PressHRFlag[i] = false;
+                            PressHFlag[i] = false;
                         }else {
-                            ;// (PressData[i] = PressRLow[i])
+                            ;//( (saveValue[3]-DeltaPress_k <= PressData[i] < PressHigh[i])
                         }
+                    }
+                }else if(PressLFlag[i] == true){
+                    if (PressData[i] < PressLow[i]){
+                        PressLow[i] = PressData[i];
                         PressRLow[i] = PressData[i];
-                    }else if (PressData[i] > (saveValue[4]+DeltaPress_k)){
+//                        alarmcnt = alarmcnt_k;
+                        sound_cnt = alarmcnt_k;
+                        EnNoti_alarm(Waddress,LOWPRESS);
                         PressLRFlag[i] = false;
-                        PressLFlag[i] = false;
                     }else {
-                        ;//( ( PressLow[i] < PressData[i] < saveValue[4]+DeltaPress_k)
-                    }
-                }
-            }else{
-                if (PressData[i] >= saveValue[3]){
-                    PressHFlag[i] = true;
-                    PressHigh[i] = PressData[i];
-//                        alarmcnt = alarmcnt_k;
-                    sound_cnt = alarmcnt_k;
-                    EnNoti_alarm(Waddress,HIGHPRESS);
-                }else if (PressData[i] < saveValue[4]){
-                    PressLFlag[i] = true;
-                    PressLow[i] = PressData[i];
-//                        alarmcnt = alarmcnt_k;
-                    sound_cnt = alarmcnt_k;
-                    EnNoti_alarm(Waddress,LOWPRESS);
-                }else{
-                    PressHFlag[i] = false;
-                    PressLFlag[i] = false;
-                }
-            }
-            //TEMPERTURE
-            if (TempHFlag[i] == true){
-                if (TempData[i] > TempHigh[i]){
-                    TempHigh[i] = TempData[i];
-                    TempRHigh[i] = TempData[i];
-//                        alarmcnt = alarmcnt_k;
-                    sound_cnt = alarmcnt_k;
-                    EnNoti_alarm(Waddress,HIGHTEMP);
-                    TempHRFlag[i] = false;
-                }else {
-                    if (TempData[i] < TempHigh[i] && TempData[i] >= saveValue[5]){
-                        if (TempData[i] < TempRHigh[i]){
-                            TempHRFlag[i] = true;
-                        }else if (TempData[i] > TempRHigh[i]){
-                            TempHRFlag[i] = false;
+                        if (PressData[i] > PressLow[i] && PressData[i] < saveValue[4]){
+                            if (PressData[i] > PressRLow[i]){
+                                PressLRFlag[i] = true;
+                            }else if (PressData[i] < PressRLow[i]){
+                                PressLRFlag[i] = false;
+                            }else {
+                                ;// (PressData[i] = PressRLow[i])
+                            }
+                            PressRLow[i] = PressData[i];
+                        }else if (PressData[i] > (saveValue[4]+DeltaPress_k)){
+                            PressLRFlag[i] = false;
+                            PressLFlag[i] = false;
                         }else {
-                            ;// (TempData[i] = TempRHigh[i])
+                            ;//( ( PressLow[i] < PressData[i] < saveValue[4]+DeltaPress_k)
                         }
-                        TempRHigh[i] = TempData[i];
-                    }else if (TempData[i] < (saveValue[5]-DeltaTemp_k)){
-                        TempHRFlag[i] = false;
-                        TempHFlag[i] = false;
-                    }else {
-                        ;//( (saveValue[5]-DeltaTemp_k <= TempData[i] < TempHigh[i])
+                    }
+                }else{
+                    if (PressData[i] >= saveValue[3]){
+                        PressHFlag[i] = true;
+                        PressHigh[i] = PressData[i];
+//                        alarmcnt = alarmcnt_k;
+                        sound_cnt = alarmcnt_k;
+                        EnNoti_alarm(Waddress,HIGHPRESS);
+                    }else if (PressData[i] < saveValue[4]){
+                        PressLFlag[i] = true;
+                        PressLow[i] = PressData[i];
+//                        alarmcnt = alarmcnt_k;
+                        sound_cnt = alarmcnt_k;
+                        EnNoti_alarm(Waddress,LOWPRESS);
+                    }else{
+                        PressHFlag[i] = false;
+                        PressLFlag[i] = false;
                     }
                 }
-            }else{
-                if (TempData[i] >= saveValue[5]){
-                    TempHFlag[i] = true;
-                    TempHigh[i] = TempData[i];
+                //TEMPERTURE
+                if (TempHFlag[i] == true){
+                    if (TempData[i] > TempHigh[i]){
+                        TempHigh[i] = TempData[i];
+                        TempRHigh[i] = TempData[i];
 //                        alarmcnt = alarmcnt_k;
-                    sound_cnt = alarmcnt_k;
-                    EnNoti_alarm(Waddress,HIGHTEMP);
+                        sound_cnt = alarmcnt_k;
+                        EnNoti_alarm(Waddress,HIGHTEMP);
+                        TempHRFlag[i] = false;
+                    }else {
+                        if (TempData[i] < TempHigh[i] && TempData[i] >= saveValue[5]){
+                            if (TempData[i] < TempRHigh[i]){
+                                TempHRFlag[i] = true;
+                            }else if (TempData[i] > TempRHigh[i]){
+                                TempHRFlag[i] = false;
+                            }else {
+                                ;// (TempData[i] = TempRHigh[i])
+                            }
+                            TempRHigh[i] = TempData[i];
+                        }else if (TempData[i] < (saveValue[5]-DeltaTemp_k)){
+                            TempHRFlag[i] = false;
+                            TempHFlag[i] = false;
+                        }else {
+                            ;//( (saveValue[5]-DeltaTemp_k <= TempData[i] < TempHigh[i])
+                        }
+                    }
                 }else{
-                    TempHFlag[i] = false;
+                    if (TempData[i] >= saveValue[5]){
+                        TempHFlag[i] = true;
+                        TempHigh[i] = TempData[i];
+//                        alarmcnt = alarmcnt_k;
+                        sound_cnt = alarmcnt_k;
+                        EnNoti_alarm(Waddress,HIGHTEMP);
+                    }else{
+                        TempHFlag[i] = false;
+                    }
                 }
-            }
-            //BT
-            if (BtLowFlag[i] == true){
-                if (BtFlag[i] == true){
-                    BtLowFlag[i] = true;
+                //BT
+                if (BtLowFlag[i] == true){
+                    if (BtFlag[i] == true){
+                        BtLowFlag[i] = true;
+                    }else{
+                        BtLowFlag[i] = false;
+                    }
                 }else{
-                    BtLowFlag[i] = false;
+                    if (BtFlag[i] == true){
+                        BtLowFlag[i] = true;
+                        sound_cnt = alarmcnt_k;
+                        EnNoti_alarm(Waddress,LOWBT);
+                    }else{
+                        BtLowFlag[i] = false;
+                    }
                 }
-            }else{
-                if (BtFlag[i] == true){
-                    BtLowFlag[i] = true;
-                    sound_cnt = alarmcnt_k;
-                    EnNoti_alarm(Waddress,LOWBT);
-                }else{
-                    BtLowFlag[i] = false;
-                }
-            }
 
-        }else if (RxFlag[i] == false){
+            }else if (RxFlag[i] == false){
 //                Log.d(TAG, "R=0");
-            PressHFlag[i] = false;
-            PressLFlag[i] = false;
-            TempHFlag[i] = false;
-        }else {
+                PressHFlag[i] = false;
+                PressLFlag[i] = false;
+                TempHFlag[i] = false;
+            }else {
 //                Log.d(TAG, "R=1 Data same");
-            //(RxFlag[i] == true && !((PressData[i] != PressDataBuf[i]) || (TempData[i] != TempDataBuf[i])))
-        }
-        PressDataBuf[i] = PressData[i];
-        TempDataBuf[i] = TempData[i];
-        BtFlagBuf[i] = BtFlag[i];
+                //(RxFlag[i] == true && !((PressData[i] != PressDataBuf[i]) || (TempData[i] != TempDataBuf[i])))
+            }
+            PressDataBuf[i] = PressData[i];
+            TempDataBuf[i] = TempData[i];
+            BtFlagBuf[i] = BtFlag[i];
 
-        int changei = CHECK_WHEEL(i);
-        FLASH_WHEEL[changei] = true;
+            int changei = CHECK_WHEEL(i);
+            FLASH_WHEEL[changei] = true;
+        }
+
     }
 
 
@@ -1997,6 +2015,12 @@ public class blescreenMain extends Activity {
         }
 //        etRead.setText(String.valueOf((TempData[wheel_N]))+"&"+String.valueOf((TempDataS[wheel_N])));
 //        Log.d(TAG, String.valueOf(saveValue[1])+" "+String.valueOf(saveValue[2]));
+    }
+
+    private void display_PTvalue_all(){
+        for (int i=0; i<wheelN_k; i++) {
+            display_PTvalue(i);
+        }
     }
 
 
@@ -2794,6 +2818,8 @@ public class blescreenMain extends Activity {
             miBtnVoice.setOnClickListener(iBtnVoiceOnclick);
         }
 
+        mlistview = (ListView) findViewById(R.id.listview) ;
+
         etRead = (EditText) findViewById(R.id.editText2);
         mBtnDemo = (Button) findViewById(BtnDemo);
         mBtnDemo.setOnClickListener(mBtnDemoOnclick);
@@ -2853,7 +2879,7 @@ public class blescreenMain extends Activity {
     }
 
 
-    public  void  init_RXFLAG() {
+    public void init_RXFLAG() {
         for (int i=0; i<wheelN_k; i++){
             RxFlag[i] = false;
             PressHFlag[i] = false;
@@ -2867,7 +2893,11 @@ public class blescreenMain extends Activity {
         }
     }
 
-
+    public void init_FLASH_ALL() {
+        for (int i=0; i<wheelN_k; i++){
+            FLASH_WHEEL[i] = true;
+        }
+    }
 
     public void init_para() {
 
@@ -2886,19 +2916,26 @@ public class blescreenMain extends Activity {
         PressData[1]= 33.0;
         PressData[2]= 32.0;
         PressData[3]= 31.5;
+        PressData[4]= 32.0;
+        PressData[5]= 31.5;
         PressDataBuf[0]= 32.5;
         PressDataBuf[1]= 33.0;
         PressDataBuf[2]= 32.0;
         PressDataBuf[3]= 31.5;
+        PressDataBuf[4]= 32.0;
+        PressDataBuf[5]= 31.5;
         TempData[0]= 25;
         TempData[1]= 24;
         TempData[2]= 26;
         TempData[3]= 25;
+        TempData[4]= 26;
+        TempData[5]= 25;
         TempDataBuf[0]= 25;
         TempDataBuf[1]= 24;
         TempDataBuf[2]= 26;
         TempDataBuf[3]= 25;
-
+        TempDataBuf[4]= 26;
+        TempDataBuf[5]= 25;
 
         w1press = 32;
         w2press = 32;
@@ -2950,6 +2987,14 @@ public class blescreenMain extends Activity {
     }
 
     public void init_display() {
+        if (wheel4screen == true) {
+            mlistview.setVisibility(View.INVISIBLE);
+        } else {
+            mlistview.setVisibility(View.VISIBLE);
+            init_FLASH_ALL();
+            display_listview();
+        }
+
         if (DEBUG_MODE == true) {
             if (SHOW_PROTOCOL == true) {
                 etRead.setVisibility(View.VISIBLE);
@@ -3229,10 +3274,16 @@ public class blescreenMain extends Activity {
 //            etRead.setText(String.valueOf(GetPara(saveKey[SETFLAG])));
             if (GetPara(saveKey[SETFLAG]) == 1){
                 unit_update();
+                init_FLASH_ALL();
                 SetPara(saveKey[SETFLAG],0);
                 if (GetPara(saveKey[CLOSE]) == 1){
                     SetPara(saveKey[CLOSE],0);
                     askcloseapp();
+                }
+                if (GetPara(saveKey[SETWHEEL]) != 0){
+                    SetWheel(GetPara(saveKey[SETWHEEL]));
+                    SetPara(saveKey[SETWHEEL],0);
+                    chk_module = false;
                 }
             }
             if (GetPara(saveKeyV[SETVFLAG]) == 1){
@@ -3243,6 +3294,7 @@ public class blescreenMain extends Activity {
                     askcloseapp();
                 }
             }
+            Check_module();
             handler9.postDelayed(this, 1000);
         }
     };
@@ -4050,6 +4102,8 @@ public class blescreenMain extends Activity {
 //            setsound_RF();
 //            Cmd_T1();
 //            Cmd_LEARX();
+
+
         }
     };
     private View.OnClickListener iBtnMode2Onclick= new View.OnClickListener() {
@@ -4061,6 +4115,7 @@ public class blescreenMain extends Activity {
 //            Cmd_TEST();
 //            Cmd_LEND();
 //            EnNoti_alarm(2,1);
+//            Cmd_TC40();
         }
     };
     private View.OnClickListener iBtnMode3Onclick= new View.OnClickListener() {
@@ -4069,6 +4124,7 @@ public class blescreenMain extends Activity {
             Intent i = new Intent(blescreenMain.this,blesetting.class);
             startActivity(i);//開始跳往要去的Activity
 //            Cmd_LEND();
+
         }
     };
     private View.OnClickListener iBtnMode4Onclick= new View.OnClickListener() {
@@ -4080,9 +4136,17 @@ public class blescreenMain extends Activity {
 //              Cmd_LEND();
 //            loadpara();
 //            loadparaV();
+
             About();
+
+//            Intent i = new Intent(blescreenMain.this,DatamainActivity.class);
+//            startActivity(i);//開始跳往要去的Activity
+
+//            mlistview.setVisibility(View.VISIBLE);
+//            display_listview();
         }
     };
+
 
     private View.OnClickListener iBtnSetOnclick= new View.OnClickListener() {
         @Override
@@ -4248,13 +4312,62 @@ public class blescreenMain extends Activity {
     };
 
 
+    private void display_listview(){
+//        mlistview.setVisibility(View.VISIBLE);
+        if (wheel4screen == false){
+            boolean update_f = false;
+            for (int i = 0; i < wheelN_k; i++) {
+                if (FLASH_WHEEL[i] == true){
+                    update_f = true;
+                }
+            }
+            if (update_f == true){
+                Load_listview_data();
+                mDatamainActivity.ListView_Customer(mlistview);
+            }
+            for (int i = 0; i < wheelN_k; i++) {
+                FLASH_WHEEL[i] = false;
+            }
+        }
+    }
+
+    private void Load_listview_data() {
+        mDatamainActivity.wheelN = wheelN_k;
+        display_PTvalue_all();
+        mDatamainActivity.pvalue = PressDataS;
+        mDatamainActivity.tvalue = TempDataS;
+        mDatamainActivity.rxflag = RxFlag;
+        mDatamainActivity.btflag = BtLowFlag;
+        boolean AlarmFlag[] = new boolean[wheelN_kT];
+        boolean AlarmPFlag[] = new boolean[wheelN_kT];
+        boolean AlarmTFlag[] = new boolean[wheelN_kT];
+        for (int i = 0; i < wheelN_k; i++) {
+            AlarmFlag[i] = false;
+            AlarmPFlag[i] = false;
+            AlarmTFlag[i] = false;
+        }
+        for (int i = 0; i < wheelN_k; i++) {
+            AlarmFlag[i] = PressHFlag[i] | PressLFlag[i] | TempHFlag[i];
+            if ((PressHFlag[i] || PressLFlag[i]) == true){
+                AlarmPFlag[i] = true;
+            }
+            if (TempHFlag[i] == true){
+                AlarmTFlag[i] = true;
+            }
+        }
+        mDatamainActivity.statusflag = AlarmFlag;
+        mDatamainActivity.pressflag = AlarmPFlag;
+        mDatamainActivity.tempflag = AlarmTFlag;
+    }
 
 
     private void sentdata(String data){
 //        boolean sentsuccsee = mBluetoothLeService.writeCharacteristic(mNotifyCharacteristic,data);               // remote device 讀資料
 //        mBluetoothLeService.writeDATA(mNotifyCharacteristic,data);
         if (mGetDevice == true){
-            mBluetoothLeService.writeCharacteristic(mWriteCharacteristic,data);
+            if (mWriteCharacteristic != null){
+                mBluetoothLeService.writeCharacteristic(mWriteCharacteristic,data);
+            }
         }
 //        Log.d(TAG, "sentdata:"+String.valueOf(sentsuccsee));
 
@@ -4283,6 +4396,35 @@ public class blescreenMain extends Activity {
 
 
 
+    private void Check_module(){
+        if (RXflash_enable == true){
+            if (chk_module == false) {
+                if (chk_module_FLAG == true) {
+                    Cmd_TC40();
+                }
+            }
+        }
+
+        if (chk_module == true){
+            init_FLASH_ALL();
+            if (wheelN_k == 4){
+                wheel4screen = true;
+                mlistview.setVisibility(View.INVISIBLE);
+            } else {
+                wheel4screen = false;
+                mlistview.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+
+    private void SetWheel(int wheel){
+        Cmd_TC240();
+        Cmd_TC50();
+        Cmd_TC512(wheel);
+        Cmd_TC210();
+        Cmd_TC241();
+    }
 
 
     private void Cmd_TC20(){
@@ -4328,7 +4470,7 @@ public class blescreenMain extends Activity {
     private void Cmd_TC40(){
         Cmd_data = "$A0400035#";
         sentdata(Cmd_data);
-        Log.d(TAG, "Read MD Information");
+        Log.d(TAG, "To Read MD Information");
     }
     private void Cmd_TC41(){
         Cmd_data = "$A0410036#";
@@ -4371,8 +4513,24 @@ public class blescreenMain extends Activity {
         sentdata(Cmd_data);
         Log.d(TAG, "Set No TireStaus Received Time");
     }
-    private void Cmd_TC512(){
-        Cmd_data = "$YY5102"+"";
+    private void Cmd_TC512(int wheel){
+
+        String wheelstr = "069F#";
+        switch (wheel) {
+            case 1: wheelstr = "019A#";
+                break;
+            case 2: wheelstr = "029B#";
+                break;
+            case 3: wheelstr = "039C#";
+                break;
+            case 4: wheelstr = "049D#";
+                break;
+            case 5: wheelstr = "059E#";
+                break;
+            case 6: wheelstr = "069F#";
+                break;
+        }
+        Cmd_data = "$A05102"+wheelstr;
         sentdata(Cmd_data);
         Log.d(TAG, "Set Tire Amount");
     }
@@ -4396,10 +4554,6 @@ public class blescreenMain extends Activity {
         sentdata(Cmd_data);
         Log.d(TAG, "Module Calibration Start");
     }
-
-
-
-
 
 
     private void Cmd_T1(){

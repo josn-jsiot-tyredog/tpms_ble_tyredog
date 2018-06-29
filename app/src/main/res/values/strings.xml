@@ -46,6 +46,10 @@
     <string name="menu_scan">Scan</string>
     <string name="menu_stop">Stop</string>
 
+    <string name="set2wheel">二輪模式</string>
+    <string name="set4wheel">四輪模式</string>
+    <string name="set6wheel">六輪模式</string>
+
 
     <string name="setvoice">提示音設定</string>
     <string name="voicealarm">警報提示音</string>
