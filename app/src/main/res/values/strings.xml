@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">TPMS</string>
+    <!--<string name="app_name">TPMS</string>-->
+    <string name="app_name">BLE TPMS</string>
+
 
     <string name="wellcome">歡迎使用 TYREDOG 胎壓偵測器!</string>
 
@@ -7,20 +9,7 @@
     <string name="module_connected">模組已連結!</string>
     <string name="module_disconnected">模組已中斷連結!</string>
 
-    <!--<string name="app_name">PL2303HXDSimpleTest</string>-->
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_pl2303_hxdsimple_test">PL2303HXDSimpleTest</string>
-    <string name="PL2303HXD_Set_BaudRate">BaudRate</string>
-    <string name="PL2303HXD_OpenCOMPort">Open</string>
-    <string name="PL2303HXD_WriteData">Write</string>
-    <string name="PL2303HXD_ReadData">ReadData</string>
-    <string name="PL2303HXD_StartThread">Start</string>
-    <string name="PL2303HXD_StopThread">Stop</string>
-    <string name="PL2303HXD_LoopBack">LoopBack</string>
-    <string name="PL2303HXD_SetVIDPID">Connecting New VID PID</string>
-    <string name="PL2303HXD_SetDTR">SetDTR</string>
-    <string name="PL2303HXD_GetSN">GetSN</string>
+
 
 
     <string name="ble_not_supported">裝置不支援藍芽</string>
@@ -88,6 +77,13 @@
     <string name="wheel1">右前輪</string>
     <string name="wheel2">左後輪</string>
     <string name="wheel3">右後輪</string>
+
+    <string name="w0">第一輪</string>
+    <string name="w1">第二輪</string>
+    <string name="w2">第三輪</string>
+    <string name="w3">第四輪</string>
+    <string name="w4">第五輪</string>
+    <string name="w5">第六輪</string>
 
     <string name="press">胎壓</string>
     <string name="temp">胎溫</string>

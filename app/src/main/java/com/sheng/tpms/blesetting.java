@@ -10,6 +10,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
@@ -32,12 +33,15 @@ public class blesetting extends AppCompatActivity {
 
 
 
+    Config_tpms mConfig = new Config_tpms();
 
     private boolean setwheel_FLAG = true;
+    private boolean SHOW_loadpara = false;
+    private boolean josn_config = false;
 
-    public boolean SHOW_loadpara = false;
+
     private boolean screenPL = true;
-
+    private int push_set_cnt = 0;
 
 //    private double MainSizeW_k = 0.5;
 //    private double MainTop_k = 0.2031;//0.2343;
@@ -62,9 +66,10 @@ public class blesetting extends AppCompatActivity {
     int W2 = 25;
     int W3 = 26;
     int SETWHEEL = 29;
-    private String saveKey[]=new String[]{"FIRST","PUNIT","TUNIT","HPLIMIT","LPLIMIT","HTLIMIT","HPMAX","LPMAX","HTMAX","P1","P2","P3","P4","PP1","PP2","PP3","PP4","T1","T2","T3","T4","SETFLAG","CLOSE","W0","W1","W2","W3","W4","W5","SETWHEEL"};
-    private int saveValue[]=new int[]{0,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0};
-    private int InitValue[]=new int[]{1,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0};
+    int WHEELN = 30;
+    private String saveKey[]=new String[]{"FIRST","PUNIT","TUNIT","HPLIMIT","LPLIMIT","HTLIMIT","HPMAX","LPMAX","HTMAX","P1","P2","P3","P4","PP1","PP2","PP3","PP4","T1","T2","T3","T4","SETFLAG","CLOSE","W0","W1","W2","W3","W4","W5","SETWHEEL","WHEELN"};
+    private int saveValue[]=new int[]{0,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0,4};
+    private int InitValue[]=new int[]{1,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0,4};
     int PressPoint[]=new int[]{0,1,2,2};
     int TempPoint[]=new int[]{0,0};
 
@@ -100,34 +105,34 @@ public class blesetting extends AppCompatActivity {
     private double ModeBottom_k = 0;
     private double ScVSetSizeH_k = 1-0.04;
 
+
+    private Handler handler1 = new Handler(); //btndetector
+
+
     String TAG = "blesetting";
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "Enter onCreate");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otgsetting);
 
-
+        initConfig();
 
 
         getwindowsize();
 
 
         loadpara();
-
         init_display();
 
+        timerdisable();
+        handler1.postDelayed(btndetector, 10000);
 
-//        handler3.removeCallbacks(AutoRXTimer);
-//        handler3.postDelayed(AutoRXTimer, 200);
-
-//        handler4.removeCallbacks(CheckUSBTimer);
-//        handler4.postDelayed(CheckUSBTimer, 5000);
         Log.d(TAG, "Leave onCreate");
     }//onCreate
+
     @Override
     protected void onStart() {
         Log.d(TAG, "Enter onStart");
@@ -158,11 +163,31 @@ public class blesetting extends AppCompatActivity {
         Log.d(TAG, "Enter onDestroy");
         super.onDestroy();
         loadpara();
+        timerdisable();
         Log.d(TAG, "Leave onDestroy");
     }
 
 
+    private void timerdisable() {
+        handler1.removeCallbacks(btndetector);
+//        handler1.postDelayed(btndetector, 1000);
+    }
 
+    private Runnable btndetector = new Runnable() {
+        public void run() {
+            handler1.removeCallbacks(btndetector);
+            push_set_cnt = 0;
+            handler1.postDelayed(btndetector, 10000);
+        }
+    };
+
+
+    private  void  initConfig() {
+
+        setwheel_FLAG = mConfig.setwheel_FLAG;
+        SHOW_loadpara = mConfig.SHOW_loadpara;
+        josn_config = mConfig.josn_config;
+    }
 
     private void getwindowsize() {
         DisplayMetrics dm = new DisplayMetrics();
@@ -246,8 +271,8 @@ public class blesetting extends AppCompatActivity {
 
         mrelativeLayoutsetting = (RelativeLayout) findViewById(R.id.relativeLayoutsetting);
 
-        miBtn2Wheel = (Button)findViewById(R.id.iBtn2Wheel);
-        miBtn4Wheel = (Button)findViewById(R.id.iBtn4Wheel);
+        miBtn2Wheel = (Button) findViewById(R.id.iBtn2Wheel);
+        miBtn4Wheel = (Button) findViewById(R.id.iBtn4Wheel);
         miBtn6Wheel = (Button)findViewById(R.id.iBtn6Wheel);
         miBtn2Wheel.setOnClickListener(iBtn2WheelOnclick);
         miBtn4Wheel.setOnClickListener(iBtn4WheelOnclick);
@@ -365,11 +390,15 @@ public class blesetting extends AppCompatActivity {
         }
 
 
-        if (setwheel_FLAG == true) {
-            mrelativeLayoutsetting.setVisibility(View.VISIBLE);
-        } else {
-            mrelativeLayoutsetting.setVisibility(View.INVISIBLE);
+        if (screenPL == true) {
+            if (setwheel_FLAG == true) {
+                mrelativeLayoutsetting.setVisibility(View.VISIBLE);
+            } else {
+//                mrelativeLayoutsetting.setVisibility(View.INVISIBLE);
+                mrelativeLayoutsetting.setVisibility(View.GONE);
+            }
         }
+
 
 
         if (screenPL==true){
@@ -380,10 +409,19 @@ public class blesetting extends AppCompatActivity {
         dispaly_para();
     }
     public void init_icon_Port() {
-        miBtnMode1.setImageResource(R.drawable.p_mode_status_0);
-        miBtnMode2.setImageResource(R.drawable.p_mode_voice_0);
-        miBtnMode3.setImageResource(R.drawable.p_mode_set_1);
-        miBtnMode4.setImageResource(R.drawable.p_mode_about_0);
+        if (josn_config == true) {
+            if (saveValue[WHEELN] == 2){
+                miBtnMode1.setImageResource(R.drawable.p_mode_status_0_j_moto);
+            }else if (saveValue[WHEELN] >= 4){
+                miBtnMode1.setImageResource(R.drawable.p_mode_status_0_j_car);
+            }
+            miBtnMode3.setImageResource(R.drawable.p_mode_set_1_j);
+        } else {
+            miBtnMode1.setImageResource(R.drawable.p_mode_status_0);
+            miBtnMode3.setImageResource(R.drawable.p_mode_set_1);
+        }
+
+
     }//init_icon_Port
     public void init_icon_Land() {
 
@@ -743,6 +781,13 @@ public class blesetting extends AppCompatActivity {
         public void onClick(View v) {
 //            WriteToFile(string);
 //            ClrPara("FIRST");
+
+
+            push_set_cnt = push_set_cnt + 1;
+            if (push_set_cnt >= 30 ) {
+                mrelativeLayoutsetting.setVisibility(View.VISIBLE);
+            }
+
         }
     };
     private View.OnClickListener iBtnMode4Onclick= new View.OnClickListener() {

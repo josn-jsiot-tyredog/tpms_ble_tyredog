@@ -41,9 +41,11 @@ import static com.sheng.tpms.R.id.iTxtVnotiyV1;
 
 public class voicesetting extends AppCompatActivity {
 
+    Config_tpms mConfig = new Config_tpms();
 
+    private boolean SHOW_loadpara = false;
+    private boolean josn_config = false;
 
-    public boolean SHOW_loadpara = false;
     private boolean screenPL = true;
     private int voice_value;
 
@@ -59,9 +61,10 @@ public class voicesetting extends AppCompatActivity {
     int AlarmFlag = 9;
     int NotiyFlag = 10;
     int CLOSEV = 11;
-    String saveKey[]=new String[]{"Voice","AlarmSysV","NotiySysV","AlarmAppV","NotiyAppV","AlarmMax","NotiyMax","SETVFLAG","SAFLAG","AlarmFlag","NotiyFlag","CLOSEV"};
-    int saveValue[]=new int[]{0,0,0,0,0,0,0,0,1,1,1,0};
-    int initValue[]=new int[]{0,0,0,0,0,0,0,0,1,1,1,0};
+    int WHEELNV = 12;
+    String saveKey[]=new String[]{"Voice","AlarmSysV","NotiySysV","AlarmAppV","NotiyAppV","AlarmMax","NotiyMax","SETVFLAG","SAFLAG","AlarmFlag","NotiyFlag","CLOSEV","WHEELNV"};
+    int saveValue[]=new int[]{0,0,0,0,0,0,0,0,1,1,1,0,4};
+    int initValue[]=new int[]{0,0,0,0,0,0,0,0,1,1,1,0,4};
 
     boolean chkcancel_Flag = false;
     boolean chkcancel_Flag2 = false;
@@ -89,6 +92,7 @@ public class voicesetting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voicesetting);
 
+        initConfig();
 
         getwindowsize();
 
@@ -135,6 +139,14 @@ public class voicesetting extends AppCompatActivity {
 
 
         Log.d(TAG, "Leave onDestroy");
+    }
+
+
+    private  void  initConfig() {
+
+        SHOW_loadpara = mConfig.SHOW_loadpara;
+        josn_config = mConfig.josn_config;
+
     }
 
 
@@ -392,10 +404,19 @@ public class voicesetting extends AppCompatActivity {
         dispaly_para();
     }
     public void init_icon_Port() {
-        miBtnMode1.setImageResource(R.drawable.p_mode_status_0);
-        miBtnMode2.setImageResource(R.drawable.p_mode_voice_1);
-        miBtnMode3.setImageResource(R.drawable.p_mode_set_0);
-        miBtnMode4.setImageResource(R.drawable.p_mode_about_0);
+        if (josn_config == true) {
+            if (saveValue[WHEELNV] == 2){
+                miBtnMode1.setImageResource(R.drawable.p_mode_status_0_j_moto);
+            }else if (saveValue[WHEELNV] >= 4){
+                miBtnMode1.setImageResource(R.drawable.p_mode_status_0_j_car);
+            }
+            miBtnMode2.setImageResource(R.drawable.p_mode_voice_1_j);
+        } else {
+            miBtnMode1.setImageResource(R.drawable.p_mode_status_0);
+            miBtnMode2.setImageResource(R.drawable.p_mode_voice_1);
+        }
+
+
     }//init_icon_Port
     public void init_icon_Land() {
 

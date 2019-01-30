@@ -51,6 +51,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,7 +74,6 @@ import static android.media.AudioManager.STREAM_ALARM;
 import static com.sheng.tpms.R.id.BtnDemo;
 import static com.sheng.tpms.R.id.tViewVP4;
 import static com.sheng.tpms.R.layout.port_activiyt_blescreenmain;
-
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
  * and display GATT services and characteristics supported by the device.  The Activity
@@ -85,10 +85,8 @@ public class blescreenMain extends Activity {
 
     private DatamainActivity mDatamainActivity = new DatamainActivity();
     private BluetoothGatt mBluetoothGatt;
-//    static String strValue;
-//    static{
-//        strValue = "ken";
-//    }
+    private Config_tpms mConfig = new Config_tpms();
+
 
     int oldOrientation = -1;
 
@@ -122,9 +120,10 @@ public class blescreenMain extends Activity {
     int W2 = 25;
     int W3 = 26;
     int SETWHEEL = 29;
-    private String saveKey[]=new String[]{"FIRST","PUNIT","TUNIT","HPLIMIT","LPLIMIT","HTLIMIT","HPMAX","LPMAX","HTMAX","P1","P2","P3","P4","PP1","PP2","PP3","PP4","T1","T2","T3","T4","SETFLAG","CLOSE","W0","W1","W2","W3","W4","W5","SETWHEEL"};
-    private int saveValue[]=new int[]{0,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0};
-    private int InitValue[]=new int[]{1,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0};
+    int WHEELN = 30;
+    private String saveKey[]=new String[]{"FIRST","PUNIT","TUNIT","HPLIMIT","LPLIMIT","HTLIMIT","HPMAX","LPMAX","HTMAX","P1","P2","P3","P4","PP1","PP2","PP3","PP4","T1","T2","T3","T4","SETFLAG","CLOSE","W0","W1","W2","W3","W4","W5","SETWHEEL","WHEELN"};
+    private int saveValue[]=new int[]{0,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0,4};
+    private int InitValue[]=new int[]{1,0,0,45,26,70,100,100,125,32,33,32,33,0,0,0,0,25,26,25,24,0,0,0,1,2,3,4,5,0,4};
     private int PressPoint[]=new int[]{1,0,2,2};
     private int TempPoint[]=new int[]{0,0};
 
@@ -139,10 +138,11 @@ public class blescreenMain extends Activity {
     int AlarmFlag = 9;
     int NotiyFlag = 10;
     int CLOSEV = 11;
+    int WHEELNV = 12;
 
-    String saveKeyV[]=new String[]{"Voice","AlarmSysV","NotiySysV","AlarmAppV","NotiyAppV","AlarmMax","NotiyMax","SETVFLAG","SAFLAG","AlarmFlag","NotiyFlag","CLOSEV"};
-    int saveValueV[]=new int[]{0,0,0,0,0,0,0,0,1,1,1,0};
-    int initValueV[]=new int[]{1,0,0,5,5,10,10,0,1,1,1,0};
+    String saveKeyV[]=new String[]{"Voice","AlarmSysV","NotiySysV","AlarmAppV","NotiyAppV","AlarmMax","NotiyMax","SETVFLAG","SAFLAG","AlarmFlag","NotiyFlag","CLOSEV","WHEELNV"};
+    int saveValueV[]=new int[]{0,0,0,0,0,0,0,0,1,1,1,0,4};
+    int initValueV[]=new int[]{1,0,0,5,5,10,10,0,1,1,1,0,4};
 
 
     int Fac = 1;
@@ -292,10 +292,13 @@ public class blescreenMain extends Activity {
     private boolean SHOW_LOG = false;
     private boolean DEBUG_MODE = false;
     private boolean SHOW_PROTOCOL = false;
+    private boolean josn_config = false;
+
+    private boolean listview_only = false;
     private boolean wheel4screen = false;
     private boolean chk_module_FLAG = true;
-
     private int wheelN_k = 4;
+    private boolean load_saveWHEELN = true;
 
 
     private boolean screenPL = true;
@@ -304,7 +307,7 @@ public class blescreenMain extends Activity {
     private boolean WriteFLAG = false;
     private boolean BleFstCmd = true;
     private boolean chk_module = false;
-
+    private boolean chk_module_view = false;
 
 
     private int rxant_cnt = 0;
@@ -614,7 +617,8 @@ public class blescreenMain extends Activity {
 //                updateConnectionState(R.string.disconnected);
 //                invalidateOptionsMenu();
                 RXflash_enable = false;
-                chk_module = false;
+//                chk_module = false;
+                SetCheckFlag();
                 Toast.makeText(blescreenMain.this, R.string.module_disconnected, Toast.LENGTH_LONG).show();
                 BleInt();
 //                clearUI();
@@ -661,13 +665,13 @@ public class blescreenMain extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        initConfig();
         loadpara();
         getVoicevalue();
 
         loadparaV();
-
         loadparaF();
 
 
@@ -925,6 +929,22 @@ public class blescreenMain extends Activity {
 //            }
 //        });
 //    }      //更新"狀態"
+
+
+    private  void initConfig() {
+
+        SHOW_LOG = mConfig.SHOW_LOG;
+        DEBUG_MODE = mConfig.DEBUG_MODE;
+        SHOW_PROTOCOL = mConfig.SHOW_PROTOCOL;
+        josn_config = mConfig.josn_config;
+
+        listview_only = mConfig.listview_only;
+        wheel4screen = mConfig.wheel4screen;
+        chk_module_FLAG = mConfig.chk_module_FLAG;
+        wheelN_k = mConfig.wheelN_k;
+        load_saveWHEELN = mConfig.load_saveWHEELN;
+    }
+
 
 
 
@@ -1257,7 +1277,19 @@ public class blescreenMain extends Activity {
                         wheelN = wheelN+4;
                     }
                     wheelN_k = wheelN;
+                    SetPara(saveKey[WHEELN],wheelN_k);
+                    SetPara(saveKeyV[WHEELNV],wheelN_k);
                     CallLOG(wheelN_k);
+//
+//                    if (josn_config == true) {
+//                        if (wheelN_k == 2) {
+//                            miBtnMode1.setImageResource(R.drawable.p_mode_status_1_j_moto);
+//                        } else if (wheelN_k >= 4) {
+//                            miBtnMode1.setImageResource(R.drawable.p_mode_status_1_j_car);
+//                        }
+//                    } else {
+//                        miBtnMode1.setImageResource(R.drawable.p_mode_status_1);
+//                    }
                 }
                 return;
             }else if (rxstr.indexOf(TC41) > -1){
@@ -1996,11 +2028,23 @@ public class blescreenMain extends Activity {
         }
     }
     private void loadwheel(){
-        for (int i=0; i<wheelN_k; i++){
-            if (saveValue[23+i] == 999){
-                CHANGE_WHEEL[i] = i;
-            }else{
-                CHANGE_WHEEL[i] = saveValue[23+i];
+        if (saveValue[WHEELN] == 999){
+            SetPara(saveKey[WHEELN],wheelN_k);
+            SetPara(saveKeyV[WHEELNV],wheelN_k);
+        }else{
+            if (load_saveWHEELN == true ){
+                wheelN_k = saveValue[WHEELN];
+                CallLOG(wheelN_k);
+            }
+        }
+
+        if (wheelN_k == 4) {
+            for (int i=0; i<wheelN_k; i++){
+                if (saveValue[23+i] == 999){
+                    CHANGE_WHEEL[i] = i;
+                }else{
+                    CHANGE_WHEEL[i] = saveValue[23+i];
+                }
             }
         }
     }
@@ -2801,8 +2845,6 @@ public class blescreenMain extends Activity {
             miSpinTimer = (Spinner) findViewById(R.id.iSpinTimer);
             miSpinTimer.setOnItemSelectedListener(spinTimerSelected);
 
-
-
             miBtnMode1 = (ImageButton)findViewById(R.id.iBtnMode1);
             miBtnMode2 = (ImageButton)findViewById(R.id.iBtnMode2);
             miBtnMode3 = (ImageButton)findViewById(R.id.iBtnMode3);
@@ -2818,6 +2860,7 @@ public class blescreenMain extends Activity {
             miBtnVoice.setOnClickListener(iBtnVoiceOnclick);
         }
 
+
         mlistview = (ListView) findViewById(R.id.listview) ;
 
         etRead = (EditText) findViewById(R.id.editText2);
@@ -2827,6 +2870,7 @@ public class blescreenMain extends Activity {
         miBtnMain = (ImageButton)findViewById(R.id.iBtnMain);
         miBtnMain.setOnClickListener(iBtnMainOnclick);
         miBtnLogo = (ImageButton)findViewById(R.id.iBtnLogo);
+
 
         mrelayValue1 = (RelativeLayout) findViewById(R.id.relativeLayout1);
         mrelayValue2 = (RelativeLayout) findViewById(R.id.relativeLayout2);
@@ -2987,13 +3031,25 @@ public class blescreenMain extends Activity {
     }
 
     public void init_display() {
-        if (wheel4screen == true) {
-            mlistview.setVisibility(View.INVISIBLE);
+
+        if (load_saveWHEELN == true ){
+            if (wheelN_k == 4){
+                mlistview.setVisibility(View.INVISIBLE);
+            } else {
+                mlistview.setVisibility(View.VISIBLE);
+                init_FLASH_ALL();
+                display_listview();
+            }
         } else {
-            mlistview.setVisibility(View.VISIBLE);
-            init_FLASH_ALL();
-            display_listview();
+            if (wheel4screen == true) {
+                mlistview.setVisibility(View.INVISIBLE);
+            } else {
+                mlistview.setVisibility(View.VISIBLE);
+                init_FLASH_ALL();
+                display_listview();
+            }
         }
+
 
         if (DEBUG_MODE == true) {
             if (SHOW_PROTOCOL == true) {
@@ -3117,16 +3173,28 @@ public class blescreenMain extends Activity {
         miSpinTimer.setVisibility(View.VISIBLE);
     }
     public void init_icon_Port() {
-        miBtnMain.setImageResource(R.drawable.p_main_car_0);
-        miBtnLogo.setImageResource(R.drawable.p_logo_tyredog_0);
 
         miBtnAnt.setImageResource(R.drawable.p_sign_rx_3);
 
-        miBtnMode1.setImageResource(R.drawable.p_mode_status_1);
-        miBtnMode2.setImageResource(R.drawable.p_mode_voice_0);
-        miBtnMode3.setImageResource(R.drawable.p_mode_set_0);
-        miBtnMode4.setImageResource(R.drawable.p_mode_about_0);
-
+        if (josn_config == true) {
+            if (wheelN_k == 2 ){
+                miBtnMode1.setImageResource(R.drawable.p_mode_status_1_j_moto);
+            }else if (wheelN_k >= 4 ) {
+                miBtnMode1.setImageResource(R.drawable.p_mode_status_1_j_car);
+            }
+            miBtnMode2.setImageResource(R.drawable.p_mode_voice_0_j);
+            miBtnMode3.setImageResource(R.drawable.p_mode_set_0_j);
+            miBtnMode4.setImageResource(R.drawable.p_mode_about_0_j);
+            miBtnMain.setImageResource(R.drawable.p_main_car_0_j);
+            miBtnLogo.setImageResource(R.drawable.p_logo_tyredog_0_j);
+        } else {
+            miBtnMode1.setImageResource(R.drawable.p_mode_status_1);
+            miBtnMode2.setImageResource(R.drawable.p_mode_voice_0);
+            miBtnMode3.setImageResource(R.drawable.p_mode_set_0);
+            miBtnMode4.setImageResource(R.drawable.p_mode_about_0);
+            miBtnMain.setImageResource(R.drawable.p_main_car_0);
+            miBtnLogo.setImageResource(R.drawable.p_logo_tyredog_0);
+        }
 
         miBtnTunit.setImageResource(R.drawable.p_unitt_c_0);
         miBtnPunit.setImageResource(R.drawable.p_unitp_psi_0);
@@ -3151,9 +3219,13 @@ public class blescreenMain extends Activity {
         miBtnBt4.setImageResource(R.drawable.p_sign_bt_0);
     }//init_icon_Port
     public void init_icon_Land() {
-
-        miBtnMain.setImageResource(R.drawable.p_main_car_0);
-        miBtnLogo.setImageResource(R.drawable.l_logo_tyredog_0);
+        if (josn_config == true) {
+            miBtnMain.setImageResource(R.drawable.p_main_car_0_j);
+            miBtnLogo.setImageResource(R.drawable.l_logo_tyredog_0_j);
+        } else {
+            miBtnMain.setImageResource(R.drawable.p_main_car_0);
+            miBtnLogo.setImageResource(R.drawable.l_logo_tyredog_0);
+        }
 
         miBtnAnt.setImageResource(R.drawable.l_sign_rx_3);
 
@@ -3283,7 +3355,8 @@ public class blescreenMain extends Activity {
                 if (GetPara(saveKey[SETWHEEL]) != 0){
                     SetWheel(GetPara(saveKey[SETWHEEL]));
                     SetPara(saveKey[SETWHEEL],0);
-                    chk_module = false;
+//                    chk_module = false;
+                    SetCheckFlag();
                 }
             }
             if (GetPara(saveKeyV[SETVFLAG]) == 1){
@@ -3495,38 +3568,77 @@ public class blescreenMain extends Activity {
 
 
     final static int[] alermicon = {R.mipmap.ic_tyredog,R.mipmap.ic_tyredog,R.mipmap.ic_tyredog,R.mipmap.ic_tyredog};
-    final static int[] alermlargeicon = {R.drawable.alarmw1,R.drawable.alarmw2,R.drawable.alarmw3,R.drawable.alarmw4};
-    final static int[] alermsound_p = {R.raw.pfl,R.raw.pfr,R.raw.prl,R.raw.prr};
-    final static int[] alermsound_t = {R.raw.tfl,R.raw.tfr,R.raw.trl,R.raw.trr};
-    final static int[] alermsound_s = {R.raw.sfl,R.raw.sfr,R.raw.srl,R.raw.srr};
+    final static int[] alermlargeicon4 = {R.drawable.alarmw1,R.drawable.alarmw2,R.drawable.alarmw3,R.drawable.alarmw4};
+    final static int[] alermlargeicon = {R.drawable.l_no_1_1,R.drawable.l_no_2_2,R.drawable.l_no_3_2,R.drawable.l_no_4_2,R.drawable.l_no_5_2,R.drawable.l_no_6_2};
+    final static int[] alermsound4_p = {R.raw.pfl,R.raw.pfr,R.raw.prl,R.raw.prr};
+    final static int[] alermsound4_t = {R.raw.tfl,R.raw.tfr,R.raw.trl,R.raw.trr};
+    final static int[] alermsound4_s = {R.raw.sfl,R.raw.sfr,R.raw.srl,R.raw.srr};
+    final static int[] alermsound2_p = {R.raw.pf,R.raw.pr};
+    final static int[] alermsound2_t = {R.raw.tf,R.raw.tr};
+    final static int[] alermsound2_s = {R.raw.sf,R.raw.sr};
+    final static int[] alermsound_p = {R.raw.p1,R.raw.p2,R.raw.p3,R.raw.p4,R.raw.p5,R.raw.p6};
+    final static int[] alermsound_t = {R.raw.t1,R.raw.t2,R.raw.t3,R.raw.t4,R.raw.t5,R.raw.t6};
+    final static int[] alermsound_s = {R.raw.s1,R.raw.s2,R.raw.s3,R.raw.s4,R.raw.s5,R.raw.s6};
+
 
 
     final static int[] alermtitle = {R.string.pressalarm,R.string.pressalarm,R.string.tempalarm,R.string.sensoralarm};
-    final static int[] str_wheel = {R.string.wheel0,R.string.wheel1,R.string.wheel2,R.string.wheel3};
+    final static int[] str_wheel4 = {R.string.wheel0,R.string.wheel1,R.string.wheel2,R.string.wheel3};
+    final static int[] str_wheel = {R.string.w0,R.string.w1,R.string.w2,R.string.w3,R.string.w4,R.string.w5};
     final static int[] str_type0 = {R.string.press,R.string.press,R.string.temp,R.string.sensor};
     final static int[] str_type1 = {R.string.pressH,R.string.pressL,R.string.tempH,R.string.btL};
 
     private void EnNoti_alarm(int wheel,int type){
 //        setVibrate(1000);
         int icon = alermicon[wheel];
-        int largeicon = alermlargeicon[wheel];
 
-        int soundfile = alermsound_p[wheel];
-        if (type == 0){
-            soundfile = alermsound_p[wheel];
-        }else if (type == 1){
-            soundfile = alermsound_p[wheel];
-        }else if (type == 2){
-            soundfile = alermsound_t[wheel];
-        }else{
-            soundfile = alermsound_s[wheel];
+        int largeicon = alermlargeicon4[wheel];
+        int soundfile = alermsound4_p[wheel];
+        if (wheelN_k == 4) {
+            largeicon = alermlargeicon4[wheel];
+            if (type == 0){
+                soundfile = alermsound4_p[wheel];
+            }else if (type == 1){
+                soundfile = alermsound4_p[wheel];
+            }else if (type == 2){
+                soundfile = alermsound4_t[wheel];
+            }else{
+                soundfile = alermsound4_s[wheel];
+            }
+        } else if (wheelN_k == 2){
+            largeicon = alermlargeicon[wheel];
+            if (type == 0){
+                soundfile = alermsound2_p[wheel];
+            }else if (type == 1){
+                soundfile = alermsound2_p[wheel];
+            }else if (type == 2){
+                soundfile = alermsound2_t[wheel];
+            }else{
+                soundfile = alermsound2_s[wheel];
+            }
+        } else {
+            largeicon = alermlargeicon[wheel];
+            if (type == 0){
+                soundfile = alermsound_p[wheel];
+            }else if (type == 1){
+                soundfile = alermsound_p[wheel];
+            }else if (type == 2){
+                soundfile = alermsound_t[wheel];
+            }else{
+                soundfile = alermsound_s[wheel];
+            }
         }
+
 
         String title =  getString(alermtitle[type]);
 
         StringBuffer content = new StringBuffer();
         content.delete(0,content.length());
-        content.append(getString(str_wheel[wheel]));
+        if (wheelN_k == 4) {
+            content.append(getString(str_wheel4[wheel]));
+        }else {
+            content.append(getString(str_wheel[wheel]));
+        }
         content.append(" "+getString(str_type0[type]));
         content.append(" "+getString(str_type1[type]));
         int notiyID = 999;
@@ -3540,8 +3652,19 @@ public class blescreenMain extends Activity {
 
     private void About(){
         //產生視窗物件
-        miBtnMode1.setImageResource(R.drawable.p_mode_status_0);
-        miBtnMode4.setImageResource(R.drawable.p_mode_about_1);
+        if (josn_config == true) {
+            if (wheelN_k == 2) {
+                miBtnMode1.setImageResource(R.drawable.p_mode_status_0_j_moto);
+            } else if (wheelN_k >= 4) {
+                miBtnMode1.setImageResource(R.drawable.p_mode_status_0_j_car);
+            }
+            miBtnMode4.setImageResource(R.drawable.p_mode_about_1_j);
+        } else {
+            miBtnMode1.setImageResource(R.drawable.p_mode_status_0);
+            miBtnMode4.setImageResource(R.drawable.p_mode_about_1);
+        }
+
+
 
         AlertDialog.Builder AboutDialog = new AlertDialog.Builder(blescreenMain.this);
         AboutDialog.setTitle(R.string.about);//設定視窗標題
@@ -3559,8 +3682,19 @@ public class blescreenMain extends Activity {
 //                            return;
 //                        }
                         dialog.cancel();
-                        miBtnMode1.setImageResource(R.drawable.p_mode_status_1);
-                        miBtnMode4.setImageResource(R.drawable.p_mode_about_0);
+                        if (josn_config == true) {
+                            if (wheelN_k == 2) {
+                                miBtnMode1.setImageResource(R.drawable.p_mode_status_1_j_moto);
+                            } else if (wheelN_k >= 4) {
+                                miBtnMode1.setImageResource(R.drawable.p_mode_status_1_j_car);
+                            }
+                            miBtnMode4.setImageResource(R.drawable.p_mode_about_0_j);
+                        } else {
+                            miBtnMode1.setImageResource(R.drawable.p_mode_status_1);
+                            miBtnMode4.setImageResource(R.drawable.p_mode_about_0);
+                        }
+
+
                     }
                 });//設定結束的子視窗
         AboutDialog.show();//呈現對話視窗
@@ -4099,11 +4233,6 @@ public class blescreenMain extends Activity {
                                 }).show();
             }
             Log.d(TAG,"Faccnt" + String.valueOf(Faccnt));
-//            setsound_RF();
-//            Cmd_T1();
-//            Cmd_LEARX();
-
-
         }
     };
     private View.OnClickListener iBtnMode2Onclick= new View.OnClickListener() {
@@ -4111,11 +4240,6 @@ public class blescreenMain extends Activity {
         public void onClick(View v) {
             Intent i = new Intent(blescreenMain.this,voicesetting.class);
             startActivity(i);//開始跳往要去的Activity
-//            Cmd_T0();
-//            Cmd_TEST();
-//            Cmd_LEND();
-//            EnNoti_alarm(2,1);
-//            Cmd_TC40();
         }
     };
     private View.OnClickListener iBtnMode3Onclick= new View.OnClickListener() {
@@ -4123,25 +4247,12 @@ public class blescreenMain extends Activity {
         public void onClick(View v) {
             Intent i = new Intent(blescreenMain.this,blesetting.class);
             startActivity(i);//開始跳往要去的Activity
-//            Cmd_LEND();
-
         }
     };
     private View.OnClickListener iBtnMode4Onclick= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            Intent i = new Intent(blescreenMain.this,otgabout.class);
-//            startActivity(i);//開始跳往要去的Activity
-//            Cmd_LEARX();
-//              Cmd_LEND();
-//            loadpara();
-//            loadparaV();
-
             About();
-
-//            Intent i = new Intent(blescreenMain.this,DatamainActivity.class);
-//            startActivity(i);//開始跳往要去的Activity
-
 //            mlistview.setVisibility(View.VISIBLE);
 //            display_listview();
         }
@@ -4167,10 +4278,9 @@ public class blescreenMain extends Activity {
 
 
 
-    private  void MainClose(){
+    private void MainClose(){
         soundDisable();
         timerdisable();
-
     }
 
 
@@ -4323,7 +4433,7 @@ public class blescreenMain extends Activity {
             }
             if (update_f == true){
                 Load_listview_data();
-                mDatamainActivity.ListView_Customer(mlistview);
+                mDatamainActivity.ListView_Customer(mlistview,blescreenMain.this);
             }
             for (int i = 0; i < wheelN_k; i++) {
                 FLASH_WHEEL[i] = false;
@@ -4405,18 +4515,43 @@ public class blescreenMain extends Activity {
             }
         }
 
-        if (chk_module == true){
-            init_FLASH_ALL();
-            if (wheelN_k == 4){
-                wheel4screen = true;
-                mlistview.setVisibility(View.INVISIBLE);
-            } else {
-                wheel4screen = false;
-                mlistview.setVisibility(View.VISIBLE);
+        if (chk_module == true) {
+            if (chk_module_view == false) {
+                init_FLASH_ALL();
+                if (listview_only == false) {
+                    if (wheelN_k == 4){
+                        wheel4screen = true;
+                        mlistview.setVisibility(View.INVISIBLE);
+                    } else {
+                        wheel4screen = false;
+                        mlistview.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    wheel4screen = false;
+                    mlistview.setVisibility(View.VISIBLE);
+                }
+
+                if (screenPL == true) {
+                    if (josn_config == true) {
+                        if (wheelN_k == 2) {
+                            miBtnMode1.setImageResource(R.drawable.p_mode_status_1_j_moto);
+                        } else if (wheelN_k >= 4) {
+                            miBtnMode1.setImageResource(R.drawable.p_mode_status_1_j_car);
+                        }
+                    } else {
+                        miBtnMode1.setImageResource(R.drawable.p_mode_status_1);
+                    }
+                }
+
+                chk_module_view = true;
             }
         }
     }
 
+    private void SetCheckFlag(){
+        chk_module = false;
+        chk_module_view = false;
+    }
 
     private void SetWheel(int wheel){
         Cmd_TC240();

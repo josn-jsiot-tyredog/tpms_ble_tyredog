@@ -1,7 +1,468 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
-</LinearLayout>
+
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/iScVSet"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent" >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayoutGroup"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+
+            <TextView
+                android:id="@+id/iTxtSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="?attr/colorBackgroundFloating"
+                android:gravity="center"
+                android:text="@string/setset"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/iTxtUnitSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/rectangle_drawable_gary"
+                android:text="@string/setunit"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/iTxtAlarmSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_drawable_gary"
+                android:text="@string/setalarm"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_below="@+id/relativeLayoutUnit"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/iTxtSystemSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayoutAlarm"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/rectangle_drawable_gary"
+                android:text="@string/setsystem"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+
+
+
+
+
+
+
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_drawable_lightgary"
+                android:layout_below="@+id/iTxtUnitSet"
+                android:layout_marginTop="1dp"
+                android:layout_alignParentStart="true"
+                android:id="@+id/relativeLayoutUnit">
+
+
+
+
+                <TextView
+                    android:id="@+id/iTxtPunit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/iSpinPunit"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/unitpress"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <Spinner
+                    android:id="@+id/iSpinPunit"
+                    android:prompt="@string/spinPunit"
+                    style="@style/Animation.AppCompat.DropDownUp"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:entries="@array/UnitPress_Var"
+                    android:spinnerMode="dialog"
+                    android:gravity="left"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/iTxtTunit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/iTxtPunit"
+                    android:layout_toLeftOf="@+id/iSpinTunit"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/unittemp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <Spinner
+                    android:id="@+id/iSpinTunit"
+                    android:entries="@array/UnitTemp_Var"
+                    android:prompt="@string/spinTunit"
+                    style="@style/Animation.AppCompat.DropDownUp"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:spinnerMode="dialog"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_below="@+id/iSpinPunit"
+                    android:gravity="left"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_drawable_lightgary"
+                android:layout_below="@+id/iTxtAlarmSet"
+                android:layout_marginTop="1dp"
+                android:layout_alignParentStart="true"
+                android:id="@+id/relativeLayoutAlarm">
+
+                <TextView
+                    android:id="@+id/iTxtHP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/iTxtHPlimit"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#00000000"
+                    android:text="@string/highpress"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/iTxtHPlimit"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:text="45"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+
+                <SeekBar
+                    android:id="@+id/iSebHP"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iTxtHP"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:max="100"
+                    android:progress="45"
+                    android:visibility="visible"/>
+
+
+                <TextView
+                    android:id="@+id/iTxtLP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/iSebHP"
+                    android:layout_toLeftOf="@+id/iTxtLPlimit"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#00000000"
+                    android:text="@string/lowpress"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/iTxtLPlimit"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/iSebHP"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:text="26"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+
+                <SeekBar
+                    android:id="@+id/iSebLP"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iTxtLP"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:max="100"
+                    android:progress="26"
+                    android:visibility="visible"/>
+
+
+                <TextView
+                    android:id="@+id/iTxtHT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/iSebLP"
+                    android:layout_toLeftOf="@+id/iTxtHTlimit"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#00000000"
+                    android:text="@string/hightemp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/iTxtHTlimit"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/iSebLP"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:text="70"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+
+                <SeekBar
+                    android:id="@+id/iSebHT"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iTxtHT"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:max="125"
+                    android:progress="70"
+                    android:visibility="visible"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_drawable_lightgary"
+                android:id="@+id/relativeLayoutSystem"
+                android:layout_below="@+id/iTxtSystemSet"
+                android:layout_marginTop="1dp"
+                android:layout_alignParentStart="true">
+
+                <Button
+                    android:id="@+id/iBtnInitial"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/setinitial"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+                <Button
+                    android:id="@+id/iBtnClose"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/setstop"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_drawable_lightgary"
+                android:id="@+id/relativeLayoutsetting"
+                android:layout_below="@+id/relativeLayoutSystem"
+                android:layout_marginTop="1dp"
+                android:layout_alignParentStart="true">
+
+                <Button
+                    android:id="@+id/iBtn2Wheel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/set2wheel"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+                <Button
+                    android:id="@+id/iBtn4Wheel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/set4wheel"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+
+                <Button
+                    android:id="@+id/iBtn6Wheel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rectangle_drawable_white"
+                    android:text="@string/set6wheel"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+    <ImageButton
+        android:id="@+id/iBtnMode1"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/p_mode_status_1"/>
+
+    <ImageButton
+        android:id="@+id/iBtnMode2"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/iBtnMode1"
+        android:layout_marginLeft="0dp"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/p_mode_voice_0"/>
+
+    <ImageButton
+        android:id="@+id/iBtnMode3"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/iBtnMode2"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/p_mode_set_0"/>
+
+    <ImageButton
+        android:id="@+id/iBtnMode4"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/iBtnMode3"
+        android:adjustViewBounds="true"
+        android:background="@color/open"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/p_mode_about_0"/>
+
+
+
+    <TextView
+        android:id="@+id/iTxtPara"
+        android:scrollbars="vertical"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:text="Load Para Data"/>
+
+
+
+</RelativeLayout>

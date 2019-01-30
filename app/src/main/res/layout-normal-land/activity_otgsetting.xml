@@ -1,16 +1,14 @@
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent" >
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/black">
-
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
 
 
         <TextView
@@ -23,7 +21,7 @@
             android:gravity="center"
             android:text="@string/setset"
             android:textColor="@color/white"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/iTxtUnitSet"
@@ -35,44 +33,41 @@
             android:background="@drawable/rectangle_drawable_gary"
             android:text="@string/setunit"
             android:textColor="@color/white"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/iTxtAlarmSet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayoutUnit"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_drawable_gary"
             android:text="@string/setalarm"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_below="@+id/relativeLayoutUnit"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentStart="true"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/iTxtSystemSet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/relativeLayoutAlarm"
             android:layout_marginTop="10dp"
-            android:layout_alignParentStart="true"
             android:background="@drawable/rectangle_drawable_gary"
             android:text="@string/setsystem"
             android:textColor="@color/white"
-            android:textSize="18sp"/>
-
+            android:textSize="18sp" />
 
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutUnit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_drawable_lightgary"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/iTxtUnitSet"
             android:layout_marginTop="1dp"
-            android:layout_alignParentStart="true"
-            android:id="@+id/relativeLayoutUnit">
-
-
+            android:background="@drawable/rectangle_drawable_lightgary">
 
 
             <TextView
@@ -81,19 +76,18 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/iSpinPunit"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_toLeftOf="@+id/iSpinPunit"
                 android:background="@drawable/rectangle_drawable_white"
                 android:text="@string/unitpress"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/iSpinPunit"
-                android:prompt="@string/spinPunit"
                 style="@style/Animation.AppCompat.DropDownUp"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
@@ -101,9 +95,10 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:entries="@array/UnitPress_Var"
-                android:spinnerMode="dialog"
                 android:gravity="left"
-                android:visibility="visible"/>
+                android:prompt="@string/spinPunit"
+                android:spinnerMode="dialog"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/iTxtTunit"
@@ -111,40 +106,40 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/iTxtPunit"
-                android:layout_toLeftOf="@+id/iSpinTunit"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@+id/iSpinTunit"
                 android:background="@drawable/rectangle_drawable_white"
                 android:text="@string/unittemp"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/iSpinTunit"
-                android:entries="@array/UnitTemp_Var"
-                android:prompt="@string/spinTunit"
                 style="@style/Animation.AppCompat.DropDownUp"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:spinnerMode="dialog"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_alignParentEnd="true"
                 android:layout_below="@+id/iSpinPunit"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:entries="@array/UnitTemp_Var"
                 android:gravity="left"
-                android:layout_alignParentEnd="true"/>
+                android:prompt="@string/spinTunit"
+                android:spinnerMode="dialog"
+                android:visibility="visible" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutAlarm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_drawable_lightgary"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/iTxtAlarmSet"
             android:layout_marginTop="1dp"
-            android:layout_alignParentStart="true"
-            android:id="@+id/relativeLayoutAlarm">
+            android:background="@drawable/rectangle_drawable_lightgary">
 
             <TextView
                 android:id="@+id/iTxtHP"
@@ -152,15 +147,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/iTxtHPlimit"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@+id/iTxtHPlimit"
                 android:background="#00000000"
                 android:text="@string/highpress"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/iTxtHPlimit"
@@ -175,7 +170,7 @@
                 android:gravity="center"
                 android:text="45"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
 
             <SeekBar
@@ -190,7 +185,7 @@
                 android:layout_marginTop="8dp"
                 android:max="100"
                 android:progress="45"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
 
             <TextView
@@ -199,15 +194,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/iSebHP"
-                android:layout_toLeftOf="@+id/iTxtLPlimit"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@+id/iTxtLPlimit"
                 android:background="#00000000"
                 android:text="@string/lowpress"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/iTxtLPlimit"
@@ -222,7 +217,7 @@
                 android:gravity="center"
                 android:text="26"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
 
             <SeekBar
@@ -237,7 +232,7 @@
                 android:layout_marginTop="8dp"
                 android:max="100"
                 android:progress="26"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
 
             <TextView
@@ -246,15 +241,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/iSebLP"
-                android:layout_toLeftOf="@+id/iTxtHTlimit"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@+id/iTxtHTlimit"
                 android:background="#00000000"
                 android:text="@string/hightemp"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/iTxtHTlimit"
@@ -269,7 +264,7 @@
                 android:gravity="center"
                 android:text="70"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
 
             <SeekBar
@@ -284,20 +279,18 @@
                 android:layout_marginTop="8dp"
                 android:max="125"
                 android:progress="70"
-                android:visibility="visible"/>
+                android:visibility="visible" />
         </RelativeLayout>
 
 
-
-
         <RelativeLayout
+            android:id="@+id/relativeLayoutSystem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_drawable_lightgary"
-            android:id="@+id/relativeLayoutSystem"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/iTxtSystemSet"
             android:layout_marginTop="1dp"
-            android:layout_alignParentStart="true">
+            android:background="@drawable/rectangle_drawable_lightgary">
 
             <Button
                 android:id="@+id/iBtnInitial"
@@ -314,7 +307,7 @@
                 android:background="@drawable/rectangle_drawable_white"
                 android:text="@string/setinitial"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/iBtnClose"
@@ -327,7 +320,7 @@
                 android:background="@drawable/rectangle_drawable_white"
                 android:text="@string/setstop"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/iBtnReturn"
@@ -343,21 +336,20 @@
                 android:background="@drawable/rectangle_drawable_white"
                 android:text="@string/setreturn"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </RelativeLayout>
 
 
-
-
         <RelativeLayout
+            android:id="@+id/relativeLayoutSetting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_drawable_lightgary"
-            android:id="@+id/relativeLayoutSetting"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/relativeLayoutSystem"
             android:layout_marginTop="1dp"
-            android:layout_alignParentStart="true">
+            android:visibility="gone"
+            android:background="@drawable/rectangle_drawable_lightgary">
 
             <Button
                 android:id="@+id/iBtn2Wheel"
@@ -374,7 +366,7 @@
                 android:background="@drawable/rectangle_drawable_white"
                 android:text="@string/set2wheel"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/iBtn4Wheel"
@@ -387,7 +379,7 @@
                 android:background="@drawable/rectangle_drawable_white"
                 android:text="@string/set4wheel"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/iBtn6Wheel"
@@ -403,21 +395,19 @@
                 android:background="@drawable/rectangle_drawable_white"
                 android:text="@string/set6wheel"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </RelativeLayout>
 
 
-
         <TextView
             android:id="@+id/iTxtPara"
-            android:scrollbars="vertical"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:text="Load Para Data"/>
-
+            android:layout_alignParentStart="true"
+            android:scrollbars="vertical"
+            android:text="Load Para Data" />
 
 
     </RelativeLayout>

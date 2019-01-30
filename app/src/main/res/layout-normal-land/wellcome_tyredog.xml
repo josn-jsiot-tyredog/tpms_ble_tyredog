@@ -15,6 +15,5 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/td_1"/>
 
-
-
 </RelativeLayout>
+

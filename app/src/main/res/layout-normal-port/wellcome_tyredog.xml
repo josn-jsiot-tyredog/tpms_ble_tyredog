@@ -9,12 +9,11 @@
     <ImageButton
         android:id="@+id/iBtnMainlogo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:background="@color/open"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/td_1"/>
-
-
 
 </RelativeLayout>

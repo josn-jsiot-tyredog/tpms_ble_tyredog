@@ -4,8 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,12 +33,17 @@ import static com.sheng.tpms.R.layout.wellcome_tyredog;
 
 
 public class wellcomeMain extends AppCompatActivity{
-
     private final static String TAG = wellcomeMain.class.getSimpleName();
 
-    private boolean FLASH_FLAG = true;
+    Config_tpms mConfig = new Config_tpms();
 
 
+    private boolean SHOW_WELLCOME = true;
+    private boolean SHOW_LOG = false;
+    private boolean josn_config = false;
+
+    private boolean screenPL = false;
+    int oldOrientation = -1;
     public String prefile = "setdata";
     int Fac = 1;
     int Learn = 2;
@@ -58,6 +65,10 @@ public class wellcomeMain extends AppCompatActivity{
     private AlertDialog newVersionDialog; //新版本對話框
 
     final static int[] mainicon = {R.drawable.td_1,R.drawable.td_2,R.drawable.td_3,R.drawable.td_4,R.drawable.td_5,R.drawable.td_6,R.drawable.td_7,R.drawable.td_8,R.drawable.td_9,R.drawable.td_10};
+    final static int[] mainicon_c = {R.drawable.td_1,R.drawable.td_2,R.drawable.td_3,R.drawable.td_4,R.drawable.td_5,R.drawable.td_6,R.drawable.td_7,R.drawable.td_8,R.drawable.td_9,R.drawable.td_10};
+    final static int[] mainicon_j = {R.drawable.td_1_j,R.drawable.td_2_j,R.drawable.td_3_j,R.drawable.td_4_j,R.drawable.td_5_j,R.drawable.td_6_j,R.drawable.td_7_j,R.drawable.td_8_j,R.drawable.td_9_j,R.drawable.td_10_j};
+
+
 
     int flash_cnt = 0;
     int flashwait_k = 90;
@@ -83,12 +94,24 @@ public class wellcomeMain extends AppCompatActivity{
 //        intoNextPage();
         setContentView(wellcome_tyredog);
 
+        initConfig();
+
         loadparaF();
 
 
+
+        if (josn_config == true ){
+            for (int i = 0; i < mainicon.length; i++) {
+                mainicon[i] = mainicon_j[i];
+            }
+        } else {
+            for (int i = 0; i < mainicon.length; i++) {
+                mainicon[i] = mainicon_c[i];
+            }
+        }
         getwindowsize();
         if (saveValueF[Fac] != 1){
-            if (FLASH_FLAG == true){
+            if (SHOW_WELLCOME == true){
                 handler1.removeCallbacks(FlashTimer);
                 handler1.postDelayed(FlashTimer, 500);
             }else{
@@ -97,6 +120,11 @@ public class wellcomeMain extends AppCompatActivity{
         }
     }
 
+    private void initConfig(){
+        SHOW_WELLCOME = mConfig.SHOW_WELLCOME;
+        SHOW_LOG = mConfig.SHOW_LOG;
+        josn_config = mConfig.josn_config;
+    }
 
     private  void init_findview(){
 
@@ -138,27 +166,34 @@ public class wellcomeMain extends AppCompatActivity{
         float vertDpi = dm.ydpi;
 
 
-//        if (screenWidth >= screenHeigth) {
-//            screenPL = false;              //landscape
-//        } else {
-//            screenPL = true;               //portrait
-//        }
+        if (screenWidth >= screenHeigth) {
+            screenPL = false;              //landscape
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//橫屏
+        } else {
+            screenPL = true;               //portrait
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏
+        }
 
         if (saveValueF[Fac] != 1){
             setContentView(R.layout.wellcome_tyredog);
         }else {
             setContentView(R.layout.fac_tyredog);
-
-
         }
 
         init_findview();
 
         if (saveValueF[Fac] != 1){
             //Main
-            int MainSizeW = (int)(screenWidth*(MainSizeW_k));
-            int MainSizeH = (int)(screenHeigth*(MainSizeH_k));
-            myimageviewsize(miBtnMainlogo,(MainSizeW),(MainSizeH));
+            if (screenPL == false) {
+                int MainSizeW = (int)(screenWidth*(MainSizeW_k));
+                int MainSizeH = (int)(screenHeigth*(MainSizeH_k));
+                myimageviewsize(miBtnMainlogo,(MainSizeW),(MainSizeH));
+            } else {
+                int MainSizeW = (int)(screenWidth*(MainSizeW_k));
+//                int MainSizeH = (int)(screenHeigth*(MainSizeH_k));
+                myimageviewsize(miBtnMainlogo,(MainSizeW),0);
+            }
+
         }
 
     }
@@ -357,6 +392,28 @@ public class wellcomeMain extends AppCompatActivity{
 //    }
 
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        //檢測修改字型大小設定
+        if (newConfig.fontScale != 1) getResources();
+
+        // 检测屏幕的方向：纵向或横向
+        if(oldOrientation != newConfig.orientation)
+        {
+            if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+            {
+
+            }else{
+
+            }
+            oldOrientation = newConfig.orientation;
+        }
+
+    }
+
+
 
     private void saveparaF(){
         for (int i=0; i<saveKeyF.length; i++) {
@@ -366,7 +423,7 @@ public class wellcomeMain extends AppCompatActivity{
     private void loadparaF(){
         for (int i=0; i<saveKeyF.length; i++) {
             saveValueF[i] = GetPara(saveKeyF[i]);
-            Log.d(TAG,"loadparaF"+":"+String.valueOf(saveValueF[i]));
+            CallLOG("loadparaF"+":"+String.valueOf(saveValueF[i]));
         }
         if (saveValueF[0] == 999 || saveValueF[0] == 0){
             for (int i=0; i<saveKeyF.length; i++) {
@@ -548,6 +605,12 @@ public class wellcomeMain extends AppCompatActivity{
     };
 
 
+
+    private void CallLOG(String str){
+        if (SHOW_LOG == true){
+            Log.d(TAG, str);
+        }
+    }
 
 }
 

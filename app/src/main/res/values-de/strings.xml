@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TPMS</string>
+    <!--<string name="app_name">TPMS</string>-->
+    <string name="app_name">BLE TPMS</string>
 
+    <!--<string name="wellcome">Willkommen zu TIREMONI TPMS !</string>-->
+    <string name="wellcome">Willkommen zu TYREDOG TPMS !</string>
 
-    <string name="wellcome">Willkommen zu TIREMONI TPMS !</string>
 
     <string name="module_power">Bitte verbinde das Modul mit dem Stromkabel !</string>
     <string name="module_connected">Modul verbunden !</string>
@@ -26,9 +28,11 @@
     <string name="checkscan">Weiter nach TPMS Modul suchen?</string>
     <string name="scanerror">Scan ungültig</string>
     <string name="contiune">Weiter</string>
+    <string name="moduleerror">模組中斷連結</string>
     <string name="Demo">Demo-Betrieb</string>
     <string name="PushScan">Starte Scan!</string>
     <string name="moduleint">Modul Unterbrochen!</string>
+
 
 
     <string name="menu_connect">Verbinden</string>
@@ -75,6 +79,16 @@
     <string name="wheel1">Rad rechts vorne</string>
     <string name="wheel2">Rad links hinten</string>
     <string name="wheel3">Rad rechts hinten</string>
+    <string name="w0">Erstes rad</string>
+    <string name="w1">Zweites rad</string>
+    <string name="w2">Drittes rad</string>
+    <string name="w3">Viertes rad</string>
+    <string name="w4">Fünftes rad</string>
+    <string name="w5">Sechstes rad</string>
+
+
+
+
 
     <string name="press">Druck</string>
     <string name="temp">Temperatur</string>
@@ -88,6 +102,13 @@
 
     <string name="chwok">Radposition geschaltet</string>
 
+    <string name="psi">Psi</string>
+    <string name="bar">Bar</string>
+    <string name="kgcm2">Kg/cm2</string>
+    <string name="kpa">Kpa</string>
+    <string name="cTemp">℃</string>
+    <string name="fTemp">℉</string>
+
 
     <string name="LOGO">TireMoni</string>
     <string name="closeapp">TPMS System beenden?</string>
@@ -100,11 +121,56 @@
     <string name="resetscan">Scan TPMS Modul wiederholen?</string>
 
 
-    <string name="company">tpm GmbH</string>
-    <string name="phone">Tel: +49 (9099) 966 4966</string>
-    <string name="mail">Mail: sales@tiremoni.com</string>
-    <string name="web">Web: www.tiremoni.com</string>
-    <string name="address">Adresse: Gewerbepark 26, D-86687 Kaisheim</string>
+    <!--<string name="company">tpm GmbH</string>-->
+    <!--<string name="phone">Tel: +49 (9099) 966 4966</string>-->
+    <!--<string name="mail">Mail: sales@tiremoni.com</string>-->
+    <!--<string name="web">Web: www.tiremoni.com</string>-->
+    <!--<string name="address">Adresse: Gewerbepark 26, D-86687 Kaisheim</string>-->
+    <string name="company">JOSN Electronic Co., Ltd.</string>
+    <string name="phone">Tel: (02)2299-6900</string>
+    <string name="mail">Mail: sales@josn.com.tw</string>
+    <string name="web">Web: www.josn.com.tw</string>
+    <string name="address">Address: 3F, No.12, Wugong 6th Rd., Xinzhuang Dist., New Taipei City, 242, Taiwan</string>
 
 
+
+
+    <string name="Learn">學習模式</string>
+    <string name="Learx">上電學習</string>
+    <string name="Lend">退出</string>
+    <string name="Fac">工廠模式</string>
+    <string name="Test">感度測試</string>
+    <string name="Cal">開始校正</string>
+    <string name="Ton">開啟接收</string>
+    <string name="Toff">關閉接收</string>
+    <string name="Timer">時間設定</string>
+    <string name="Gerid">讀取ID</string>
+    <string name="Version">模組版本</string>
+
+    <string name="spinTimer">時間間隔 :</string>
+
+    <string name="facexlen">已退出</string>
+    <string name="faclearn">配對中</string>
+    <string name="facfac">工廠模式</string>
+    <string name="factest">測試模式</string>
+    <string name="faccal">校正中</string>
+    <string name="faccalerr">校正失敗</string>
+    <string name="faccalok">校正成功</string>
+    <string name="factoff">已關閉接收</string>
+    <string name="facton">已開啟接收</string>
+    <string name="factimer">已設定:</string>
+
+    <string name="modefac">工廠模式</string>
+    <string name="modelen">學習模式</string>
+    <string name="modechk">複測模式</string>
+    <string name="modecal">校正模式</string>
+    <string name="modetest">測試模式</string>
+    <string name="modebletest">藍芽測試</string>
+    <string name="modeemode">工程模式</string>
+    <string name="modeexit">一般模式</string>
+    <string name="modeqa">品保模式</string>
+    <string name="modever">查看版本</string>
+    <string name="openfac">進入工廠模式?</string>
+    <string name="epeople">工程大大</string>
+    <string name="title_activity_daramain">daramain</string>
 </resources>
