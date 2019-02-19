@@ -7,7 +7,7 @@ package com.sheng.tpms;
 
 public class Config_tpms {
 
-    
+
     public boolean josn_config = false;
 
 //wellcomeMain
